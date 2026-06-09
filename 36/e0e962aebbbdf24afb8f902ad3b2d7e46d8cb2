@@ -1,0 +1,499 @@
+rules/common/project-updates.md
+  s_443ffc47b630e8::t_5acd10a5bf7e80 52
+  s_443ffc47b630e8::t_2928a14f7c55f7 3
+  s_443ffc47b630e8::t_3c1658fe314355 32-45
+commands/team.md
+  s_443ffc47b630e8::t_9d2265690ee73e 157-158
+  s_443ffc47b630e8::t_cb3587fd4ca1a6 2-7
+  s_443ffc47b630e8::t_b789b628e670a3 96-105
+commands/refactor-clean.md
+  s_443ffc47b630e8::t_f89274ffb4fd46 63
+  s_443ffc47b630e8::t_85ae1bee0661d2 128-132
+  s_443ffc47b630e8::t_5386ab02d1a1d5 48
+  s_443ffc47b630e8::t_55f4f7be29e10a 194
+  s_443ffc47b630e8::t_80c602e041c6d8 238-240
+  s_443ffc47b630e8::t_d191caa7be926e 32
+  s_443ffc47b630e8::t_bcdd4e9b945693 104-107
+  s_443ffc47b630e8::t_6ad7f2626eee2e 289
+  s_443ffc47b630e8::t_ded0236b75a696 212-218
+  s_443ffc47b630e8::t_1115ebb626cc2c 162-187
+  s_443ffc47b630e8::t_a2e3ed4b9189bc 306
+  s_443ffc47b630e8::t_7b701b8eff1bb9 2-16
+install.sh
+  s_443ffc47b630e8::t_1e2fcb36477042 38-39
+  s_443ffc47b630e8::t_0d94c5206da428 3-5
+  s_443ffc47b630e8::t_5ec535340a2439 379-387
+  s_443ffc47b630e8::t_14888be6016fd5 542-558
+  s_443ffc47b630e8::t_75e92bd8e5934b 334-351
+  s_443ffc47b630e8::t_1dbc23e4af78ae 510-524
+  s_443ffc47b630e8::t_d571193aaf2026 48
+  s_443ffc47b630e8::t_9f63c2e3931af6 397-414
+rules/common/security.md
+  s_443ffc47b630e8::t_729d8bf6654c1e 3-232
+skills/senior-engineering/SKILL.md
+  s_443ffc47b630e8::t_b89434d3cae4c1 254
+  s_443ffc47b630e8::t_e2444d712b575c 3
+skills/customer-incident-reporting/SKILL.md
+  s_443ffc47b630e8::t_4044d59d33cf1e 30,71
+  s_443ffc47b630e8::t_b660c906977c7c 63
+  s_443ffc47b630e8::t_446117ee633c94 1-22,24-29,31-62,64-70,72-135,137,140-193
+  s_443ffc47b630e8::t_3ed02af969b76e 136,138-139
+  s_443ffc47b630e8::t_629128f309bd44 23
+agents/integrator.md
+  s_443ffc47b630e8::t_6b4506b6659355 272-336
+  s_443ffc47b630e8::t_ee038dc0ebb7d3 8
+  s_443ffc47b630e8::t_e8095db7ca41d3 355-359
+  s_443ffc47b630e8::t_e15e5b4af87a19 19-36
+commands/update-docs.md
+  s_443ffc47b630e8::t_15d0de130ad9d8 72
+  s_443ffc47b630e8::t_81aad91d43ff7c 226-277
+  s_443ffc47b630e8::t_7fa0828174403c 214
+  s_443ffc47b630e8::t_89c8ad9fd83fb0 201
+  s_443ffc47b630e8::t_4cb1fb39b56c71 110
+  s_443ffc47b630e8::t_901fe6a80336e6 3-9
+  s_443ffc47b630e8::t_1a4f2423600e89 152-190
+  s_443ffc47b630e8::t_d57ae9e78e269b 320-343
+  s_443ffc47b630e8::t_43897d54bbcbfb 44
+tests/install-minimal.test.js
+  s_443ffc47b630e8::t_a2b4ef577ea870 31-240
+mcp-configs/mcp-servers.json
+  s_443ffc47b630e8::t_8d6bba6973481e 2-22
+commands/verify.md
+  s_443ffc47b630e8::t_907637d1fbde7a 3-87
+agents/planner.md
+  s_443ffc47b630e8::t_a2b49c35a68fad 157-161
+  s_443ffc47b630e8::t_a06fa42b332e1c 169-189
+  s_443ffc47b630e8::t_bf36d23503e21c 88-147
+  s_443ffc47b630e8::t_d402ba7a38dddc 8-82
+skills/llm-tldr/SKILL.md
+  s_443ffc47b630e8::t_e760f7fc3d6852 281,358
+  s_443ffc47b630e8::t_9b8c2eb397cc2b 336
+  s_443ffc47b630e8::t_8103dadf56cd55 265
+  s_443ffc47b630e8::t_2f66cb7e78753a 277
+  s_443ffc47b630e8::t_66a0433d615df9 425-447
+  s_443ffc47b630e8::t_f0f964f60df5b9 240-251
+  s_443ffc47b630e8::t_dea7ce9ddcf0d8 262
+  s_443ffc47b630e8::t_a41a22d78bb358 312-313
+  s_443ffc47b630e8::t_6356f6a61120dd 297
+agents/harness-intake.md
+  s_443ffc47b630e8::t_d88bf0aede32bd 214
+  s_443ffc47b630e8::t_ad28056d517108 63-70
+  s_443ffc47b630e8::t_9df987ca08d450 179
+  s_443ffc47b630e8::t_44552c5ff86572 8
+  s_443ffc47b630e8::t_4a25df1614e977 31-37
+  s_443ffc47b630e8::t_056f68172c9813 86-92
+tests/install.test.js
+  s_443ffc47b630e8::t_b72f95782ff5a4 167-169
+  s_443ffc47b630e8::t_c20b6c45143155 46-47
+  s_443ffc47b630e8::t_cd25e92e8a979d 174-176
+commands/plan.md
+  s_443ffc47b630e8::t_773b773446d13e 7
+  s_443ffc47b630e8::t_cc4e1bc8194a85 34
+  s_443ffc47b630e8::t_c787250ade100f 44-108
+  s_443ffc47b630e8::t_46eb96bfce6fdc 136-167
+  s_443ffc47b630e8::t_4271a1bdea3b8e 19-27
+skills/feature-flags/SKILL.md
+  s_443ffc47b630e8::t_c2b02ef7486048 122
+  s_443ffc47b630e8::t_e6e470043cf868 245-248
+  s_443ffc47b630e8::t_b9d367ca866d6e 91-112
+  s_443ffc47b630e8::t_06cae8b4f7283b 31
+  s_443ffc47b630e8::t_3f360e574e5771 143
+  s_443ffc47b630e8::t_a73913cf5198ec 50
+  s_443ffc47b630e8::t_6128a8e2c6210b 156-183
+  s_443ffc47b630e8::t_715f7f188aaeba 62-63
+  s_443ffc47b630e8::t_a5477b7ff6e91f 75-77
+  s_443ffc47b630e8::t_c82843ed42b878 206-234
+  s_443ffc47b630e8::t_1e353b5db475ab 1-18
+commands/migrate.md
+  s_443ffc47b630e8::t_e1240af756695b 2-109
+hooks/hooks.json
+  s_443ffc47b630e8::t_11179f9cdc007f 7-221
+install-minimal.js
+  s_443ffc47b630e8::t_9e037cca5a740e 3-386
+scripts/hooks/session-start.js
+  s_443ffc47b630e8::t_2d9626ea21f6d1 34-36
+  s_443ffc47b630e8::t_58c0e26f11b2c6 165-166
+  s_443ffc47b630e8::t_2f6cf7ac6416dc 8-10
+  s_443ffc47b630e8::t_b7e6343b7de9a5 77-78
+commands/tldr.md
+  s_443ffc47b630e8::t_b2582c4083c342 65
+  s_443ffc47b630e8::t_c82af12610a87d 44-46
+  s_443ffc47b630e8::t_1edf9794fa7b34 117
+  s_443ffc47b630e8::t_3ead1f358b1d95 89-90
+skills/discovery-process/SKILL.md
+  s_443ffc47b630e8::t_472868d874e84e 352
+  s_443ffc47b630e8::t_237b2bb05b332d 88
+agents/explorer.md
+  s_443ffc47b630e8::t_af34c93ca76a60 3-21
+  s_443ffc47b630e8::t_2debb93f7429cc 52-83
+  s_443ffc47b630e8::t_bc3608e8d2013c 36-37
+scripts/hooks/session-start-minimal.js
+  s_443ffc47b630e8::t_274cfd159a37e6 27
+  s_443ffc47b630e8::t_ad648c3ca05207 4
+rules/common/patterns.md
+  s_443ffc47b630e8::t_23c8fe415e5ad4 3-400
+skills/coding-standards/SKILL.md
+  s_443ffc47b630e8::t_f1150329a49ac8 3-8
+  s_443ffc47b630e8::t_1b12fb3b4a8648 529-534
+  s_443ffc47b630e8::t_ecb4b9a885cbee 27
+  s_443ffc47b630e8::t_4e9e57ed573d61 231-244
+  s_443ffc47b630e8::t_27320cbbd45434 545-554
+  s_443ffc47b630e8::t_7d1bcb3306f650 644-734
+  s_443ffc47b630e8::t_b768fed754da5f 395-407
+  s_443ffc47b630e8::t_060ba00972a435 949
+  s_443ffc47b630e8::t_75241a2fcca9f1 97-98
+  s_443ffc47b630e8::t_0c4d4a7283acc6 106-183
+  s_443ffc47b630e8::t_577b5ffc39263b 579-590
+  s_443ffc47b630e8::t_108fe32e56c1d9 256-282
+  s_443ffc47b630e8::t_a75ee16a61824f 763-782
+  s_443ffc47b630e8::t_69871a288c0098 627
+  s_443ffc47b630e8::t_186540a38ae0d5 823-829
+  s_443ffc47b630e8::t_6ebf75cbd0596f 955-956
+  s_443ffc47b630e8::t_5c8223e2e5fe51 745
+  s_443ffc47b630e8::t_57e6435460544a 432-433
+  s_443ffc47b630e8::t_a56f73478b327c 792-810
+  s_443ffc47b630e8::t_302d3d74cb32f9 371-380
+  s_443ffc47b630e8::t_de4af56232aaef 189-222
+  s_443ffc47b630e8::t_49648b74607778 452
+  s_443ffc47b630e8::t_e2305eed63f95c 991
+  s_443ffc47b630e8::t_ed871d0ed086ee 62-68
+  s_443ffc47b630e8::t_1216e251ae1869 514-515
+  s_443ffc47b630e8::t_eb88a662166b53 994
+skills/observability-patterns/SKILL.md
+  s_443ffc47b630e8::t_b77626efb094de 186-193
+  s_443ffc47b630e8::t_727a4b502395e9 58
+  s_443ffc47b630e8::t_3d994931c3160b 305
+  s_443ffc47b630e8::t_8bdb0d2006bb98 178-181
+  s_443ffc47b630e8::t_4fda472298e13d 226-232
+  s_443ffc47b630e8::t_25e59046a7614d 264-301
+  s_443ffc47b630e8::t_1f5ad4ab3af2f4 43-53
+  s_443ffc47b630e8::t_3c2553328ff50e 214
+  s_443ffc47b630e8::t_7bff6504a26b81 306
+  s_443ffc47b630e8::t_f990ce6e4b07c4 249
+  s_443ffc47b630e8::t_0ad9555500ed8a 133-146
+  s_443ffc47b630e8::t_3ab1130f1d30d4 340
+  s_443ffc47b630e8::t_4c1f7a92527245 157-159
+  s_443ffc47b630e8::t_d66d7453e6c52e 1-9
+  s_443ffc47b630e8::t_f20fa62c378445 70
+skills/tdd-workflow/SKILL.md
+  s_443ffc47b630e8::t_9a937dc1215267 3-249,251-1081
+  s_443ffc47b630e8::t_894ff8c3fc78da 250
+skills/operational-excellence/SKILL.md
+  s_443ffc47b630e8::t_a8cae5d78097c7 98-99
+  s_443ffc47b630e8::t_336fe6afc38859 309,330-334
+  s_443ffc47b630e8::t_15fdeee5873041 85-96,104-136
+  s_443ffc47b630e8::t_25909d26d5e9f5 343
+  s_443ffc47b630e8::t_51db1915915625 411
+  s_443ffc47b630e8::t_79ff09328bbcf8 259-278
+  s_443ffc47b630e8::t_2365b31cf05ba2 279
+  s_443ffc47b630e8::t_2bbe33efd936db 312-322
+  s_443ffc47b630e8::t_56019d1424b3c1 347-362
+  s_443ffc47b630e8::t_24376ec6d19af6 1-12
+  s_443ffc47b630e8::t_73c27a2901cad7 294-301
+  s_443ffc47b630e8::t_d2d70625c22054 58
+  s_443ffc47b630e8::t_539412f4f66864 244-248
+  s_443ffc47b630e8::t_8c2c60e3e381af 60-79
+.claude-plugin/plugin.json
+  s_443ffc47b630e8::t_914094ec1d71f1 3-819
+install.js
+  s_443ffc47b630e8::t_b2f99611abb63a 992-995
+  s_443ffc47b630e8::t_dd6ad3a00889bc 367-385
+  s_443ffc47b630e8::t_2eb6ae70aee0d6 446-455
+  s_443ffc47b630e8::t_fef0b26bce9da5 535
+  s_443ffc47b630e8::t_ebd0b1521ea908 629-640
+  s_443ffc47b630e8::t_2f417916437f1d 1052-1058
+  s_443ffc47b630e8::t_c626403541f6ab 410-417
+  s_443ffc47b630e8::t_77e7fc5cbf6b77 839-855
+  s_443ffc47b630e8::t_819f22e371f589 470
+  s_443ffc47b630e8::t_0e5c7dc8079113 3
+  s_443ffc47b630e8::t_c1d2aeb6738b2e 808-819
+  s_443ffc47b630e8::t_fcbda30fa3d027 105
+  s_443ffc47b630e8::t_7466d04d8a90c3 913
+  s_443ffc47b630e8::t_3543772db02fb9 44-51
+.claude-plugin/marketplace.json
+  s_443ffc47b630e8::t_0eeb91b8bbe1e5 2-54
+scripts/lib/merge-claude-md.sh
+  s_443ffc47b630e8::t_1716435a1b643f 9-19
+skills/customer-incident-reporting/templates/flash-report-template.md
+  s_443ffc47b630e8::t_7c5f6da23b6651 17
+  s_443ffc47b630e8::t_608ab6bb30e8af 57
+  s_443ffc47b630e8::t_00b36f6686c04c 37
+  s_443ffc47b630e8::t_7897ee2493cdf3 49
+README.md
+  s_443ffc47b630e8::t_e63720c9072586 1-106
+tests/no-senseon-coupling.test.js
+  s_443ffc47b630e8::t_13d9afa2e8ee60 121-124
+  s_443ffc47b630e8::t_d10e0e9ed5dcc5 1-37,39-120,125-144
+  s_443ffc47b630e8::t_43e3d02da1e4af 38
+skills/customer-incident-reporting/references/organizational-overlay.md
+  s_443ffc47b630e8::t_cc67465f28c0c6 9
+  s_443ffc47b630e8::t_c634603d0f26e6 31-34
+commands/health.md
+  s_443ffc47b630e8::t_bcb3d4c737efac 7
+  s_443ffc47b630e8::t_495cb8696efacf 105
+commands/perf.md
+  s_443ffc47b630e8::t_e5bb1e62e00790 2-106
+commands/python-review.md
+  s_443ffc47b630e8::t_7fa21260fa4531 377-381
+  s_443ffc47b630e8::t_fa85baffc5a5db 2-34
+  s_443ffc47b630e8::t_a15c9808836a28 279-280
+  s_443ffc47b630e8::t_3838ffbdfa2f31 392-413
+  s_443ffc47b630e8::t_c79edc5e800516 310-342
+  s_443ffc47b630e8::t_fadb75103bea74 52-53
+  s_443ffc47b630e8::t_66461c09d5907e 350-365
+  s_443ffc47b630e8::t_1cea3647a75f28 74-87
+  s_443ffc47b630e8::t_900bf33c49b998 99-182
+  s_443ffc47b630e8::t_90c5582b72a6d3 479-486
+  s_443ffc47b630e8::t_092c87d69a9576 514-519
+  s_443ffc47b630e8::t_f76e695f79c254 43
+  s_443ffc47b630e8::t_1d93f1f3828fa4 208-241
+  s_443ffc47b630e8::t_f17473e31a3f11 428
+  s_443ffc47b630e8::t_a89d4c7754323d 549-551
+  s_443ffc47b630e8::t_5b73aadfdec7b6 454-468
+  s_443ffc47b630e8::t_98288d6e2db4d9 441
+commands/set-chapter.md
+  s_443ffc47b630e8::t_9cc8d97093a507 24-36
+  s_443ffc47b630e8::t_e619dfb997a6c9 3-13
+  s_443ffc47b630e8::t_bffd8126fcc660 68
+  s_443ffc47b630e8::t_ec02749c8178df 59
+  s_443ffc47b630e8::t_53cc16894e22fc 43
+skills/verification-loop/SKILL.md
+  s_443ffc47b630e8::t_8eb6e37168ef1a 66
+  s_443ffc47b630e8::t_e5839d55e5e1a9 53
+  s_443ffc47b630e8::t_bdf1f715458c07 73
+  s_443ffc47b630e8::t_3477137874cc2c 3-8
+  s_443ffc47b630e8::t_dd73eed75b793c 127-132
+  s_443ffc47b630e8::t_724b1c71a990cd 22-27
+  s_443ffc47b630e8::t_253dca21c7c49a 39,328
+  s_443ffc47b630e8::t_c72bab40ef67ec 173-184
+  s_443ffc47b630e8::t_7920cd718a693e 208-225
+  s_443ffc47b630e8::t_3518e0ae47d629 283
+  s_443ffc47b630e8::t_3aa2dcce626eea 368
+skills/product-clarity-review/references/source-map.md
+  s_443ffc47b630e8::t_bdf849e00456b5 81
+  s_443ffc47b630e8::t_855f1abc558ddd 49-58,63-65
+  s_443ffc47b630e8::t_08b1c778a612ee 61
+  s_443ffc47b630e8::t_8c42fd716259ba 9-16
+skills/customer-evidence/SKILL.md
+  s_443ffc47b630e8::t_b4c3b4155edad2 24
+  s_443ffc47b630e8::t_c62098219cd003 27-29
+  s_443ffc47b630e8::t_5f0e9ddb48153f 39
+  s_443ffc47b630e8::t_78558071e4ea88 12
+agents/harness-orchestrator.md
+  s_443ffc47b630e8::t_7416c562d9fb90 89
+  s_443ffc47b630e8::t_65f9b73056319d 324-331
+  s_443ffc47b630e8::t_5e19933d88d535 49-68
+  s_443ffc47b630e8::t_5625a31a2913ea 274
+  s_443ffc47b630e8::t_b56859c47ade61 188
+  s_443ffc47b630e8::t_23483d0410ca21 231-232
+  s_443ffc47b630e8::t_c3745ba9c0d77d 262
+  s_443ffc47b630e8::t_cfdb1c5419cb94 3-8
+package.json
+  s_443ffc47b630e8::t_a399c488b5603f 2-13
+examples/framework-section.md
+  s_443ffc47b630e8::t_e789139477deb4 1-85
+examples/user-CLAUDE.md
+  s_443ffc47b630e8::t_2ff0b33c9de513 1-146
+rules/common/git-workflow.md
+  s_443ffc47b630e8::t_a035afba49bfcb 1-42,47-52
+  s_443ffc47b630e8::t_5bbd8fa329665a 43-46,53-54
+commands/test-coverage.md
+  s_443ffc47b630e8::t_66c9ce3689b407 3-48
+  s_443ffc47b630e8::t_78d2264d3d81c4 125-129
+  s_443ffc47b630e8::t_4c37b7393159fa 269-271
+  s_443ffc47b630e8::t_05a12788a7437d 308
+  s_443ffc47b630e8::t_2dde9b75a2ddb7 324
+  s_443ffc47b630e8::t_8c747b3bffba48 389-394
+  s_443ffc47b630e8::t_1657665d48c8c5 280-292
+  s_443ffc47b630e8::t_f7a35a184b0bac 211
+  s_443ffc47b630e8::t_e174fa97f9bf1f 139-149
+  s_443ffc47b630e8::t_86ab685304a10d 82-113
+  s_443ffc47b630e8::t_4969bbcc8d64fa 247
+  s_443ffc47b630e8::t_3216bea78bbac5 228
+  s_443ffc47b630e8::t_0af0d69415dda3 341
+  s_443ffc47b630e8::t_a249d96e4ca3ed 374
+skills/agent-teams/SKILL.md
+  s_443ffc47b630e8::t_e50ae5d46d8026 3-485
+tests/run-all.js
+  s_443ffc47b630e8::t_e7faa62148a48c 26-27
+  s_443ffc47b630e8::t_7dd8bec10f4df9 31
+commands/debug.md
+  s_443ffc47b630e8::t_98edf18c0d0cd7 2-80
+rules/common/chapter-config.md
+  s_443ffc47b630e8::t_b8c0716370a97d 3-163
+CONTRIBUTING.md
+  s_443ffc47b630e8::t_dec9c90910631d 1-320
+skills/cto-level-review/SKILL.md
+  s_443ffc47b630e8::t_551ccf7c6efa50 3
+commands/project.md
+  s_443ffc47b630e8::t_52f5dc1ad0c2af 2-119
+commands/skill-create.md
+  s_443ffc47b630e8::t_7c7e8bb4ce3ba5 174
+tests/lib/chapter-manifest.test.js
+  s_443ffc47b630e8::t_b4f14ee5fd52f3 281-282
+  s_443ffc47b630e8::t_d0debe3583f53a 154-159
+  s_443ffc47b630e8::t_bf3637d7f132fd 191-192
+the-omnissiah-guide.md
+  s_443ffc47b630e8::t_57edcb9684c223 1-192
+agents/harness-lead.md
+  s_443ffc47b630e8::t_83050ae79d7b5a 162-188
+  s_443ffc47b630e8::t_380f77311d3527 208-209
+  s_443ffc47b630e8::t_abeba3c59f18bd 3-8
+  s_443ffc47b630e8::t_f6951141e813d2 63-89
+commands/tdd.md
+  s_443ffc47b630e8::t_e4a3952069c303 2-617
+scripts/hooks/post-compact-restore.js
+  s_443ffc47b630e8::t_9c01bb1e3c32d1 36-39
+  s_443ffc47b630e8::t_e1c8d7fbfcfad1 11
+  s_443ffc47b630e8::t_e2d0460e1e204e 113-114
+rules/common/agents.md
+  s_443ffc47b630e8::t_332c628cd84091 3-137
+skills/product-clarity-review/SKILL.md
+  s_443ffc47b630e8::t_a6ff67b52e7e87 133
+  s_443ffc47b630e8::t_65a8a7ff1eb583 38
+  s_443ffc47b630e8::t_422f67b444c859 84
+skills/customer-incident-reporting/references/review-checklist.md
+  s_443ffc47b630e8::t_9fdf95bdd19193 15
+agents/e2e-runner.md
+  s_443ffc47b630e8::t_d4991467957265 369-410
+examples/CLAUDE.md
+  s_443ffc47b630e8::t_e467419290b969 1-203
+agents/scout.md
+  s_443ffc47b630e8::t_d7ba7a609f3e82 32-43
+  s_443ffc47b630e8::t_bd82ffb441ce98 67
+commands/update-codemaps.md
+  s_443ffc47b630e8::t_ee659935c3466b 50
+  s_443ffc47b630e8::t_e44bc90e726f9f 86
+  s_443ffc47b630e8::t_d98bc8c3ce5bf4 40
+  s_443ffc47b630e8::t_817880c41838a7 7-15
+  s_443ffc47b630e8::t_7f8928443e8c95 102-270
+  s_443ffc47b630e8::t_4277af7ec872cb 291-293
+  s_443ffc47b630e8::t_d9fbe7b95cc775 303
+  s_443ffc47b630e8::t_9af140696445fe 95
+  s_443ffc47b630e8::t_66c861974cd3ba 329-361
+  s_443ffc47b630e8::t_1e18641da91509 68
+commands/e2e.md
+  s_443ffc47b630e8::t_53358361492770 2-824
+scripts/hooks/bash-pre-dispatch.js
+  s_443ffc47b630e8::t_42c416afc73e65 131
+scripts/lib/chapter-config.js
+  s_443ffc47b630e8::t_b7845a6480a5b2 4
+  s_443ffc47b630e8::t_e52c4c4ca42a7c 34
+  s_443ffc47b630e8::t_dc45c26fed2b63 52
+  s_443ffc47b630e8::t_f87992a13cf62d 26
+skills/backend-patterns/SKILL.md
+  s_443ffc47b630e8::t_e8cd1c0d645301 3-601,609-1084
+  s_443ffc47b630e8::t_9a1f6bb0e58ca2 603
+skills/security-review/SKILL.md
+  s_443ffc47b630e8::t_136da4ec20807a 372-388
+  s_443ffc47b630e8::t_baff803a56f8e1 934
+  s_443ffc47b630e8::t_34afd48191b628 34
+  s_443ffc47b630e8::t_7ba5161a0290c3 3-21
+  s_443ffc47b630e8::t_f3fd49efd99905 510
+  s_443ffc47b630e8::t_af8f93569e72ee 616-619
+  s_443ffc47b630e8::t_5c9588a1d1e26b 720-758
+  s_443ffc47b630e8::t_30b59e32ddc6f4 625
+  s_443ffc47b630e8::t_c8d338b8db4d59 397
+  s_443ffc47b630e8::t_cca7fa3bb884a6 1090
+  s_443ffc47b630e8::t_7be08c6af85aef 177
+  s_443ffc47b630e8::t_41ac9a71d790a9 211-215,218-243
+  s_443ffc47b630e8::t_ff6d42778b1e8a 115-124
+  s_443ffc47b630e8::t_cc47f2f5801c8a 217
+  s_443ffc47b630e8::t_541c83cff13595 864-901
+  s_443ffc47b630e8::t_28d9c627f6101a 88-95
+  s_443ffc47b630e8::t_3d249ea2b2e3f9 252-300
+  s_443ffc47b630e8::t_7d617aaa9033f4 797
+  s_443ffc47b630e8::t_3d65d8ff6c9333 1107
+  s_443ffc47b630e8::t_2f9e8b61c7132a 533-536
+  s_443ffc47b630e8::t_f859f57541d597 798-810
+  s_443ffc47b630e8::t_7aaf2388e4551c 1130-1139
+  s_443ffc47b630e8::t_918f646ea3eb59 334-336
+  s_443ffc47b630e8::t_40d1cec64b1be1 132
+  s_443ffc47b630e8::t_e0eaf64c605dc9 525
+  s_443ffc47b630e8::t_3046aef47931b1 45-73
+  s_443ffc47b630e8::t_165548fb32c795 197
+  s_443ffc47b630e8::t_88314cc719e2b1 840-848
+  s_443ffc47b630e8::t_a9bf3e25373d9b 82
+  s_443ffc47b630e8::t_3551de212e5b74 1123
+  s_443ffc47b630e8::t_3c86904db6ddce 305
+  s_443ffc47b630e8::t_150c0a7110a526 768
+  s_443ffc47b630e8::t_0674f095c18e74 439-449
+commands/build-fix.md
+  s_443ffc47b630e8::t_6a31a86c78bb25 236
+  s_443ffc47b630e8::t_87787789805580 100-101
+  s_443ffc47b630e8::t_05f918bb9270e5 303
+  s_443ffc47b630e8::t_20904a77fd2ed7 90
+  s_443ffc47b630e8::t_a509eca6f7ae38 267
+  s_443ffc47b630e8::t_3279265b0384e1 136
+  s_443ffc47b630e8::t_db4af0d80eb01c 182-183
+  s_443ffc47b630e8::t_8d121a920e2750 158-164
+  s_443ffc47b630e8::t_6d0eab4a0d97f4 80
+  s_443ffc47b630e8::t_aca83acb09bedd 283
+  s_443ffc47b630e8::t_76a50d9ca594da 203
+  s_443ffc47b630e8::t_ef8e7d1960c3e2 223
+  s_443ffc47b630e8::t_0bc3cad1bf829b 293
+  s_443ffc47b630e8::t_a4409b2a1224ea 2-35
+skills/python-testing/SKILL.md
+  s_443ffc47b630e8::t_70c02bfd229977 356
+commands/orchestrate.md
+  s_443ffc47b630e8::t_8a13ea5826404f 69-74
+commands/code-review.md
+  s_443ffc47b630e8::t_c8b606c5d5837e 2-47
+skills/frontend-patterns/SKILL.md
+  s_443ffc47b630e8::t_24ebfa49727881 1384-1389
+  s_443ffc47b630e8::t_6fd90ab00fb042 1483-1484
+  s_443ffc47b630e8::t_c1c7d7446434e3 1633-1643
+  s_443ffc47b630e8::t_ead67f5c86c7cd 75
+  s_443ffc47b630e8::t_a84476eae207fc 420-434
+  s_443ffc47b630e8::t_62950d6c0a2c24 1136
+  s_443ffc47b630e8::t_1d857de5090b15 219-263
+  s_443ffc47b630e8::t_4621ee75781646 341-350
+  s_443ffc47b630e8::t_b1b071829e91bb 1112-1113
+  s_443ffc47b630e8::t_9fba8fd3a27885 480-573
+  s_443ffc47b630e8::t_14d3d7c00f2f77 27-34
+  s_443ffc47b630e8::t_00bd45ade84153 288-289
+  s_443ffc47b630e8::t_a60d72e40039f4 984
+  s_443ffc47b630e8::t_3b33f9794c9cdc 1095-1097
+  s_443ffc47b630e8::t_b1369d665b8114 1510-1534
+  s_443ffc47b630e8::t_671a97e78ba724 162
+  s_443ffc47b630e8::t_8331032cae5af7 3-18
+  s_443ffc47b630e8::t_5df6b8637a3125 134-149
+  s_443ffc47b630e8::t_3c100aef134b14 713-730
+  s_443ffc47b630e8::t_0648809f31a243 655
+  s_443ffc47b630e8::t_26ee158a30d489 1402-1405
+  s_443ffc47b630e8::t_fc87df6ba2e1dc 879-965
+  s_443ffc47b630e8::t_c916340b07b681 359-371
+  s_443ffc47b630e8::t_f04ed90d97cf07 302
+  s_443ffc47b630e8::t_d2d57d87fe4413 1325
+  s_443ffc47b630e8::t_aa112f69fa1408 763
+  s_443ffc47b630e8::t_e05c06ded28c18 178-188
+  s_443ffc47b630e8::t_2e82d1be3d93e2 1072-1075
+  s_443ffc47b630e8::t_74d93b49745bd2 1223-1243
+  s_443ffc47b630e8::t_35c8af619f81d6 1036
+  s_443ffc47b630e8::t_77c7787312c788 1659
+CLAUDE.md
+  s_443ffc47b630e8::t_caa20298c4243b 3-53
+contexts/review.md
+  s_443ffc47b630e8::t_890575e798618c 7-153
+tests/hooks/hooks.test.js
+  s_443ffc47b630e8::t_c74de9a3788ebf 228
+  s_443ffc47b630e8::t_be1cb7724588be 95-100
+.gitignore
+  s_443ffc47b630e8::t_5befab37691c7f 82
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "36e0e962aebbbdf24afb8f902ad3b2d7e46d8cb2",
+  "prompts": {},
+  "sessions": {
+    "s_443ffc47b630e8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6132084b-b6c0-4988-a474-26f8a28896a0",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "James Triggs <jamesjtriggs@gmail.com>"
+    }
+  }
+}
