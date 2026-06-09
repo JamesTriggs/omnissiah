@@ -1,0 +1,56 @@
+{
+  "name": "omnissiah",
+  "displayName": "Omnissiah Engineering Framework",
+  "description": "A generic, domain-agnostic Claude Code engineering framework. Provides agents, commands, skills, hooks, and rules for consistent AI-assisted development across Python, C++, and TypeScript.",
+  "version": "0.1.0",
+  "author": {
+    "name": "James Triggs"
+  },
+  "license": "MIT",
+  "categories": [
+    "code-review",
+    "testing",
+    "devops",
+    "multi-language"
+  ],
+  "tags": [
+    "code-review",
+    "security-review",
+    "flask",
+    "fastapi",
+    "vue3",
+    "nuxt3",
+    "cpp17",
+    "polyglot",
+    "tdd",
+    "continuous-learning",
+    "session-persistence",
+    "mcp-servers"
+  ],
+  "features": [
+    "Security-aware code review of uncommitted changes",
+    "Query performance analysis and optimisation",
+    "Automated formatting (Ruff for Python, ESLint for Vue/TS, cppcheck for C++)",
+    "Secret detection to prevent credential exposure in commits",
+    "Session persistence for cross-session context continuity",
+    "Instinct-based continuous learning from developer sessions",
+    "Multi-agent orchestration workflows (plan, TDD, review, security)",
+    "Eval-driven development with pass@k metrics",
+    "MCP server integration"
+  ],
+  "requirements": {
+    "claude-code": ">=1.0.0",
+    "node": ">=18.0.0",
+    "python": ">=3.9.0"
+  },
+  "optionalDependencies": {
+    "ruff": "Python formatting and linting",
+    "mypy": "Python type checking",
+    "cppcheck": "C++ static analysis",
+    "jq": "JSON processing for hooks"
+  },
+  "screenshots": [],
+  "changelog": {
+    "0.1.0": "Initial release with agents, commands, skills, hooks, rules, and MCP configuration"
+  }
+}

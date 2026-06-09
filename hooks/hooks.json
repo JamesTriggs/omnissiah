@@ -1,0 +1,237 @@
+{
+  "$schema": "../schemas/hooks.schema.json",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "description": "Dispatch all Bash pre-checks: BLOCK pushes to main/master (any form: direct, refspec, force, delete); warn on force-push to feature branches. Dev-server and install commands are intentionally not blocked; Claude runs them with user approval.",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/hooks/bash-pre-dispatch.js"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "description": "Warn before pushing to a protected branch",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/hooks/bash-pre-push-warn.js"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "description": "Block starting a development server",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/hooks/bash-pre-devserver-block.js"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "description": "Block dependency install commands so the user runs them",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/hooks/bash-pre-install-block.js"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "description": "Block commits containing secrets such as AWS keys, API tokens, and passwords",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/hooks/bash-pre-secret-check.js"
+          }
+        ]
+      },
+      {
+        "matcher": "Write",
+        "description": "Harness enforcement; warn when an orchestrator or lead role attempts a direct file write (primary enforcement is via agent tool restrictions in frontmatter)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/hooks/harness-enforce.js"
+          }
+        ]
+      },
+      {
+        "matcher": "Edit",
+        "description": "Harness enforcement; warn when an orchestrator or lead role attempts a direct file edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/hooks/harness-enforce.js"
+          }
+        ]
+      },
+      {
+        "matcher": "Write",
+        "description": "Block documentation consolidation into single files",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/hooks/write-pre-doc-block.js"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write",
+        "description": "Detect console.log in JS/TS/Vue files after write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/hooks/write-post-console-log-check.js"
+          }
+        ]
+      },
+      {
+        "matcher": "Write",
+        "description": "Auto-format Python files with Ruff after write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/hooks/write-post-python-lint.js"
+          }
+        ]
+      },
+      {
+        "matcher": "Write",
+        "description": "Run mypy type check on Python files after write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/hooks/write-post-python-typecheck.js"
+          }
+        ]
+      },
+      {
+        "matcher": "Write",
+        "description": "Run cppcheck on C++ files after write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/hooks/write-post-cpp-check.js"
+          }
+        ]
+      },
+      {
+        "matcher": "Write",
+        "description": "Run eslint-plugin-vue on Vue files after write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/hooks/write-post-vue-lint.js"
+          }
+        ]
+      },
+      {
+        "matcher": "*",
+        "description": "Suggest a manual compaction when the session grows large",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/hooks/suggest-compact.js"
+          }
+        ]
+      },
+      {
+        "matcher": "*",
+        "description": "Record tool observations for continuous learning; feeds the instinct detection pipeline",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/skills/continuous-learning-v2/hooks/observe.js"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": "*",
+        "description": "Save state before context compaction",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/hooks/pre-compact.js"
+          }
+        ]
+      }
+    ],
+    "PostCompact": [
+      {
+        "matcher": "*",
+        "description": "Restore skill context after compaction; re-injects active skill summaries to prevent capability regression",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/hooks/post-compact-restore.js"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "description": "Load previous context and environment on session start",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/hooks/session-start.js"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": "*",
+        "description": "Persist session state and learnings",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/hooks/session-end.js"
+          }
+        ]
+      },
+      {
+        "matcher": "*",
+        "description": "Evaluate the session for learnable patterns",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/hooks/evaluate-session.js"
+          }
+        ]
+      },
+      {
+        "matcher": "*",
+        "description": "Create a git checkpoint of work in progress at session end",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/hooks/git-checkpoint.js"
+          }
+        ]
+      },
+      {
+        "matcher": "*",
+        "description": "Check for uncommitted changes and suggest a commit command at session end",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/hooks/auto-commit.js"
+          }
+        ]
+      }
+    ]
+  }
+}

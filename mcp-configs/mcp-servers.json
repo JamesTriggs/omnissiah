@@ -1,0 +1,25 @@
+{
+  "_comment": "Generic MCP server template for the omnissiah framework. Add the servers your project needs under 'mcpServers'. Each entry follows the shape shown in '_example' below. No hosts, credentials, or paths are filled in by default.",
+  "mcpServers": {},
+  "_example": {
+    "my-server": {
+      "command": "npx",
+      "args": ["-y", "@scope/your-mcp-server"],
+      "env": {
+        "SOME_API_TOKEN": "${SOME_API_TOKEN}"
+      },
+      "description": "Describe what this server provides."
+    }
+  },
+  "_documentation": {
+    "setup_instructions": [
+      "1. Add your servers under 'mcpServers' (remove the empty object).",
+      "2. Use the '_example' block above as a template for each entry.",
+      "3. Reference secrets via environment variables, e.g. \"${SOME_API_TOKEN}\", never hardcode them.",
+      "4. Copy this file or merge it into ~/.claude/settings.json under 'mcpServers'.",
+      "5. Verify servers are running: claude /mcp"
+    ],
+    "adding_servers": "Add entries under 'mcpServers' and run 'node install.js --force' to merge into user settings.",
+    "windows_note": "On Windows, ${HOME} in env values is resolved to the actual home directory at install time. Run 'node install.js --force' to re-apply after cloning on Windows."
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "omnissiah",
+  "version": "0.1.0",
+  "description": "Omnissiah, a generic AI engineering OS for Claude Code providing agents, commands, skills, hooks, and coding rules.",
+  "license": "MIT",
+  "author": "James Triggs <jamesjtriggs@gmail.com>",
+  "scripts": {
+    "validate": "node scripts/ci/validate-agents.js && node scripts/ci/validate-commands.js && node scripts/ci/validate-hooks.js && node scripts/ci/validate-rules.js && node scripts/ci/validate-skills.js",
+    "test": "node tests/run-all.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/omnissiah.git"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.0.0",
+    "@commitlint/config-conventional": "^19.0.0"
+  }
+}

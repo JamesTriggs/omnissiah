@@ -1,0 +1,876 @@
+{
+  "$schema": "../schemas/plugin.schema.json",
+  "name": "omnissiah",
+  "description": "A generic, domain-agnostic Claude Code engineering framework providing agents, commands, skills, hooks, and rules for consistent AI-assisted development across Python, C++, and TypeScript.",
+  "version": "0.1.0",
+  "author": "James Triggs <jamesjtriggs@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "claude-code": ">=1.0.0"
+  },
+  "agents": [
+    {
+      "name": "architect",
+      "description": "Software architecture specialist for system design, scalability, and cross-service contracts across a polyglot stack",
+      "model": "opus",
+      "file": "agents/architect.md"
+    },
+    {
+      "name": "planner",
+      "description": "Implementation planning specialist for complex features and refactoring; outputs a plan for approval, not code",
+      "model": "opus",
+      "file": "agents/planner.md"
+    },
+    {
+      "name": "build-error-resolver",
+      "description": "Build and compilation error resolution specialist for Python, C++, Docker, Vue/Nuxt, and serialized-schema build failures",
+      "model": "sonnet",
+      "file": "agents/build-error-resolver.md"
+    },
+    {
+      "name": "code-reviewer",
+      "description": "Expert code review specialist for polyglot changes across Python, C++, TypeScript/Vue, and SQL",
+      "model": "sonnet",
+      "file": "agents/code-reviewer.md"
+    },
+    {
+      "name": "cpp-reviewer",
+      "description": "C++17 code review specialist for memory safety, thread safety, CMake, and performance in high-performance components",
+      "model": "opus",
+      "file": "agents/cpp-reviewer.md"
+    },
+    {
+      "name": "database-reviewer",
+      "description": "Dual-database specialist covering analytical and relational stores, schema design, query optimisation, and migrations",
+      "model": "opus",
+      "file": "agents/database-reviewer.md"
+    },
+    {
+      "name": "doc-updater",
+      "description": "Documentation and codemap specialist for README files, API docs, and architecture guides",
+      "model": "sonnet",
+      "file": "agents/doc-updater.md"
+    },
+    {
+      "name": "e2e-runner",
+      "description": "End-to-end testing specialist using Cypress for the Nuxt UI and critical application workflows",
+      "model": "sonnet",
+      "file": "agents/e2e-runner.md"
+    },
+    {
+      "name": "python-reviewer",
+      "description": "Expert Python code reviewer for PEP 8 compliance, type hints, security, and Pythonic idioms",
+      "model": "sonnet",
+      "file": "agents/python-reviewer.md"
+    },
+    {
+      "name": "refactor-cleaner",
+      "description": "Dead code cleanup and consolidation specialist using vulture, cppcheck, and ESLint with protected dependency awareness",
+      "model": "sonnet",
+      "file": "agents/refactor-cleaner.md"
+    },
+    {
+      "name": "security-reviewer",
+      "description": "Security vulnerability detection and remediation specialist covering secrets, injection, memory safety, and OWASP Top 10",
+      "model": "opus",
+      "file": "agents/security-reviewer.md"
+    },
+    {
+      "name": "tdd-guide",
+      "description": "Test-Driven Development specialist enforcing write-tests-first methodology across pytest, Google Test, Vitest, and Cypress",
+      "model": "sonnet",
+      "file": "agents/tdd-guide.md"
+    },
+    {
+      "name": "explorer",
+      "description": "Fast codebase exploration specialist that locates code, traces data flows, finds patterns, and answers 'where is X?' questions. Uses Haiku for speed.",
+      "model": "haiku",
+      "file": "agents/explorer.md"
+    },
+    {
+      "name": "scout",
+      "description": "Fast codebase reconnaissance that returns a structured handoff document (files retrieved, key code, architecture, start here) for downstream agents. Uses Haiku for speed.",
+      "model": "haiku",
+      "file": "agents/scout.md"
+    },
+    {
+      "name": "debugger",
+      "description": "Bug investigation specialist that traces root causes through logs, stack traces, and code across backend, native, frontend, and data layers using a five-step methodology.",
+      "model": "sonnet",
+      "file": "agents/debugger.md"
+    },
+    {
+      "name": "performance",
+      "description": "Performance analysis and optimisation specialist that profiles database queries, ORM N+1 patterns, C++ hotspots, and Vue rendering bottlenecks with before/after benchmarks.",
+      "model": "sonnet",
+      "file": "agents/performance.md"
+    },
+    {
+      "name": "migrator",
+      "description": "Database migration specialist for zero-downtime relational (Alembic), analytical store, and serialized-schema evolution with backwards compatibility.",
+      "model": "sonnet",
+      "file": "agents/migrator.md"
+    },
+    {
+      "name": "integrator",
+      "description": "Cross-service integration specialist for API contracts, serialized-schema evolution, message queue patterns, and external service connections with clean service boundaries.",
+      "model": "sonnet",
+      "file": "agents/integrator.md"
+    },
+    {
+      "name": "harness-intake",
+      "description": "Prompt quality gate for /team. Classifies task type, scores prompt completeness 0-5, and asks only the questions relevant to that task type before the orchestrator runs.",
+      "model": "haiku",
+      "file": "agents/harness-intake.md"
+    },
+    {
+      "name": "harness-orchestrator",
+      "description": "Tier-1 orchestrator for the Agent Teams harness. Receives a refined spec, selects a team preset, builds a till-done contract, and spawns harness-lead agents in parallel. Never writes code; thinks, plans, and delegates only.",
+      "model": "opus",
+      "file": "agents/harness-orchestrator.md"
+    },
+    {
+      "name": "harness-lead",
+      "description": "Tier-2 lead agent for the Agent Teams harness. Receives a domain assignment from the orchestrator, explores its domain, spawns specialist worker agents with synthesised prompts, and steps in if workers fail.",
+      "model": "sonnet",
+      "file": "agents/harness-lead.md"
+    }
+  ],
+  "commands": [
+    {
+      "name": "build-fix",
+      "description": "Incrementally fix build errors across a polyglot stack (Python, C++, TypeScript/Vue). Diagnoses compilation, import, dependency, and Docker build failures.",
+      "file": "commands/build-fix.md"
+    },
+    {
+      "name": "checkpoint",
+      "description": "Create and verify workflow checkpoints. Save named snapshots of progress for rollback and continuity across sessions.",
+      "file": "commands/checkpoint.md"
+    },
+    {
+      "name": "code-review",
+      "description": "Security-aware code review of uncommitted changes. Checks for vulnerabilities, code quality, and best-practice issues before commit.",
+      "file": "commands/code-review.md"
+    },
+    {
+      "name": "debug",
+      "description": "Systematic bug investigation workflow. Invokes the debugger agent to trace root causes across backend, frontend, native, and data layers.",
+      "file": "commands/debug.md"
+    },
+    {
+      "name": "e2e",
+      "description": "Generate and run end-to-end tests with Cypress or Playwright. Creates test journeys for dashboards, query editors, list/detail views, and multi-step workflows.",
+      "file": "commands/e2e.md"
+    },
+    {
+      "name": "eval",
+      "description": "Eval-driven development workflow (define, check, report).",
+      "file": "commands/eval.md"
+    },
+    {
+      "name": "evolve",
+      "description": "Cluster related instincts into skills, commands, or agents.",
+      "file": "commands/evolve.md"
+    },
+    {
+      "name": "health",
+      "description": "Run a full framework health check. Verifies hook scripts, plugin manifests, LLM-TLDR installation and index, CI validators, and MCP server configuration. Reports pass/fail for each component.",
+      "file": "commands/health.md"
+    },
+    {
+      "name": "instinct-export",
+      "description": "Export instincts for sharing with teammates or other projects.",
+      "file": "commands/instinct-export.md"
+    },
+    {
+      "name": "instinct-import",
+      "description": "Import instincts from teammates, Skill Creator, or other sources.",
+      "file": "commands/instinct-import.md"
+    },
+    {
+      "name": "instinct-status",
+      "description": "Show all learned instincts with their confidence levels.",
+      "file": "commands/instinct-status.md"
+    },
+    {
+      "name": "learn",
+      "description": "Extract reusable patterns from the current session. Identifies coding techniques, debugging strategies, and workflow patterns worth preserving as instincts.",
+      "file": "commands/learn.md"
+    },
+    {
+      "name": "migrate",
+      "description": "Database migration workflow for relational schema changes (Alembic), analytical store schema changes, and serialized-schema evolution. Invokes the migrator agent to design safe, zero-downtime migrations.",
+      "file": "commands/migrate.md"
+    },
+    {
+      "name": "orchestrate",
+      "description": "Sequential agent workflows for complex tasks. Chains specialist agents (planner, TDD guide, code reviewer, security reviewer) with structured handoffs.",
+      "file": "commands/orchestrate.md"
+    },
+    {
+      "name": "perf",
+      "description": "Performance analysis and optimisation workflow. Invokes the performance agent to profile database queries, ORM N+1 patterns, native hotspots, and frontend rendering bottlenecks.",
+      "file": "commands/perf.md"
+    },
+    {
+      "name": "plan",
+      "description": "Restate requirements, assess risks, and create a step-by-step implementation plan. Wait for user confirmation before touching any code.",
+      "file": "commands/plan.md"
+    },
+    {
+      "name": "project",
+      "description": "Load a specific project's context when working from a parent directory. Reads the project's CLAUDE.md, checks the LLM-TLDR index status, and primes Claude with repo-specific architecture and conventions.",
+      "file": "commands/project.md"
+    },
+    {
+      "name": "python-review",
+      "description": "Comprehensive Python code review for APIs and services. Covers PEP 8 compliance, type hints, security, database patterns, serialized-schema bindings, and Pythonic idioms.",
+      "file": "commands/python-review.md"
+    },
+    {
+      "name": "refactor-clean",
+      "description": "Safely identify and remove dead code across a polyglot stack. Uses vulture (Python), cppcheck (C++), depcheck (Vue/TS) with test verification at every step.",
+      "file": "commands/refactor-clean.md"
+    },
+    {
+      "name": "sessions",
+      "description": "Manage Claude Code session history. List, load, alias, and inspect sessions stored in ~/.claude/sessions/.",
+      "file": "commands/sessions.md"
+    },
+    {
+      "name": "set-chapter",
+      "description": "Configure your chapter context (python, cpp, devops) to reduce context load by reinstalling with a chapter-scoped manifest.",
+      "file": "commands/set-chapter.md"
+    },
+    {
+      "name": "skill-create",
+      "description": "Analyse local git history to extract coding patterns and generate SKILL.md files. Local version of the Skill Creator GitHub App.",
+      "file": "commands/skill-create.md"
+    },
+    {
+      "name": "tdd",
+      "description": "Enforce a test-driven development workflow across a polyglot stack. Scaffold interfaces, generate tests first, then implement minimal code to pass. Ensure 80%+ coverage.",
+      "file": "commands/tdd.md"
+    },
+    {
+      "name": "team",
+      "description": "Launch a harness-engineered agent team to build features. Runs prompt intake then orchestrator then parallel leads then workers. The user only ever prompts the orchestrator. Use Ctrl+O to drill into any lead or worker thread.",
+      "file": "commands/team.md"
+    },
+    {
+      "name": "test-coverage",
+      "description": "Analyse test coverage and generate missing tests.",
+      "file": "commands/test-coverage.md"
+    },
+    {
+      "name": "tldr",
+      "description": "Semantic codebase search and exploration using LLM-TLDR. Use before grepping to find relevant files by behaviour, analyse call graphs, detect dead code, and get token-efficient function summaries.",
+      "file": "commands/tldr.md"
+    },
+    {
+      "name": "update-codemaps",
+      "description": "Analyse codebase structure and update architecture documentation. Generates codemaps for navigation and onboarding.",
+      "file": "commands/update-codemaps.md"
+    },
+    {
+      "name": "update-docs",
+      "description": "Sync documentation from source-of-truth files.",
+      "file": "commands/update-docs.md"
+    },
+    {
+      "name": "verify",
+      "description": "Run comprehensive verification on the current project state.",
+      "file": "commands/verify.md"
+    }
+  ],
+  "skills": [
+    {
+      "name": "agent-teams",
+      "description": "Harness engineering guide for building features with three-tier agent teams. Covers the /team command, team presets, till-done contracts, prompt quality gates, and the philosophy of building systems that build systems.",
+      "file": "skills/agent-teams/SKILL.md",
+      "triggers": [
+        "/team",
+        "agent team",
+        "harness",
+        "orchestrator",
+        "till done",
+        "team preset",
+        "multi-agent",
+        "harness engineering",
+        "three-tier"
+      ]
+    },
+    {
+      "name": "backend-patterns",
+      "description": "Backend development patterns covering FastAPI, Flask-RESTX, SQLAlchemy, an analytics database, Celery, Redis, inter-service communication, and event processing.",
+      "file": "skills/backend-patterns/SKILL.md",
+      "triggers": [
+        "fastapi",
+        "flask",
+        "celery",
+        "redis",
+        "sqlalchemy",
+        ".py"
+      ]
+    },
+    {
+      "name": "beads-workflow",
+      "description": "Converts plans into tracked beads with dependencies, polishing, validation, and execution ordering.",
+      "file": "skills/beads-workflow/SKILL.md",
+      "triggers": [
+        "beads",
+        "task graph"
+      ]
+    },
+    {
+      "name": "browser-proof",
+      "description": "Verify user-visible web changes in a real browser or browser-equivalent runtime before claiming they work.",
+      "file": "skills/browser-proof/SKILL.md",
+      "triggers": [
+        "browser proof",
+        "visual proof",
+        "playwright"
+      ]
+    },
+    {
+      "name": "build-slice",
+      "description": "Implement one small slice at a time using fresh context, bounded scope, and proof before moving on.",
+      "file": "skills/build-slice/SKILL.md",
+      "triggers": [
+        "build slice",
+        "slice implementation"
+      ]
+    },
+    {
+      "name": "ceo-advisor",
+      "description": "Executive leadership guidance for strategic decision-making, organisational development, and stakeholder management. Includes a strategy analyser, financial scenario modelling, board governance frameworks, and investor relations playbooks.",
+      "file": "skills/ceo-advisor/SKILL.md",
+      "triggers": [
+        "ceo",
+        "executive decision",
+        "organisational development",
+        "organizational development",
+        "stakeholder management",
+        "board",
+        "strategic planning"
+      ]
+    },
+    {
+      "name": "code-simplify",
+      "description": "Simplify code after a slice works. Use to remove accidental complexity, duplicate logic, speculative abstractions, and convention drift.",
+      "file": "skills/code-simplify/SKILL.md",
+      "triggers": [
+        "simplify code",
+        "code simplify",
+        "cleanup"
+      ]
+    },
+    {
+      "name": "coding-standards",
+      "description": "Universal coding standards and best practices covering Python (Flask/FastAPI), Vue.js/TypeScript (Nuxt 3), and C++17 development.",
+      "file": "skills/coding-standards/SKILL.md",
+      "triggers": [
+        "*"
+      ]
+    },
+    {
+      "name": "context-engineering",
+      "description": "Optimises agent context setup. Use when starting a new session, when agent output quality degrades, when switching between tasks, or when configuring rules files and context for a project.",
+      "file": "skills/context-engineering/SKILL.md",
+      "triggers": [
+        "context engineering",
+        "context packet",
+        "slice context"
+      ]
+    },
+    {
+      "name": "context-engineering-advisor",
+      "description": "Diagnose context stuffing vs. context engineering. Use when an AI workflow feels bloated, brittle, or hard to steer reliably.",
+      "file": "skills/context-engineering-advisor/SKILL.md",
+      "triggers": [
+        "context advisor",
+        "context stuffing",
+        "retry-heavy"
+      ]
+    },
+    {
+      "name": "continuous-learning-v2",
+      "description": "Instinct-based learning system that observes sessions via hooks, creates atomic instincts with confidence scoring, and evolves them into skills/commands/agents.",
+      "file": "skills/continuous-learning-v2/SKILL.md",
+      "triggers": [
+        "instinct",
+        "learn",
+        "evolve",
+        "observations",
+        "/learn",
+        "/evolve"
+      ]
+    },
+    {
+      "name": "cto-level-review",
+      "description": "CTO-level strategic review for architectural decisions and long-horizon changes. Focuses on strategic alignment, TCO, risk, security/compliance, operability, and reversibility.",
+      "file": "skills/cto-level-review/SKILL.md",
+      "triggers": [
+        "cto review",
+        "architecture review",
+        "frontier review"
+      ]
+    },
+    {
+      "name": "customer-evidence",
+      "description": "Pull the strongest current customer, PMF, health, and GTM evidence before solutioning. Use when work touches customer outcomes, retention, churn, adoption, PMF, roadmap bets, or strategic feature requests.",
+      "file": "skills/customer-evidence/SKILL.md",
+      "triggers": [
+        "customer evidence",
+        "pmf",
+        "customer signal"
+      ]
+    },
+    {
+      "name": "customer-incident-reporting",
+      "description": "Drafts, reviews, and redrafts customer-facing incident reports from call notes, findings, tickets, and summaries. Use when preparing flash reports, executive summaries, action trackers, or self-contained incident briefs.",
+      "file": "skills/customer-incident-reporting/SKILL.md",
+      "triggers": [
+        "incident report",
+        "flash report",
+        "executive summary",
+        "action tracker"
+      ]
+    },
+    {
+      "name": "debug-root-cause",
+      "description": "Diagnose the real cause before changing code. Use for bugs, failing tests, flaky behaviour, regressions, and surprising production symptoms.",
+      "file": "skills/debug-root-cause/SKILL.md",
+      "triggers": [
+        "debug root cause",
+        "root cause analysis"
+      ]
+    },
+    {
+      "name": "delivery-lane-router",
+      "description": "Route implementation work into the right delivery lane before coding starts. Picks quick-fix, std-feature, frontier-bet, or an outcome discovery detour based on clarity, risk, and evidence.",
+      "file": "skills/delivery-lane-router/SKILL.md",
+      "triggers": [
+        "delivery lane",
+        "router",
+        "std feature",
+        "frontier bet",
+        "quick fix"
+      ]
+    },
+    {
+      "name": "discovery-process",
+      "description": "Run a full discovery cycle from problem hypothesis to validated solution. Use when a team needs a structured path through framing, interviews, synthesis, and experiments.",
+      "file": "skills/discovery-process/SKILL.md",
+      "triggers": [
+        "discovery process",
+        "outcome discovery"
+      ]
+    },
+    {
+      "name": "eval-harness",
+      "description": "Formal evaluation framework for Claude Code sessions implementing eval-driven development (EDD) principles.",
+      "file": "skills/eval-harness/SKILL.md",
+      "triggers": [
+        "eval",
+        "pass@k",
+        "criterion",
+        "/eval",
+        "benchmark",
+        "grader"
+      ]
+    },
+    {
+      "name": "feature-flags",
+      "description": "Feature flag patterns for gradual rollout, kill switches, A/B testing, and database migration gating.",
+      "file": "skills/feature-flags/SKILL.md",
+      "triggers": [
+        "feature-flag",
+        "rollout",
+        "a/b test",
+        "kill-switch",
+        "experiment",
+        "flag"
+      ]
+    },
+    {
+      "name": "flaw-scan-x5",
+      "description": "Repeatedly scan a proposal, PRD, spec, plan, or bead set for mistakes, gaps, weak assumptions, hidden tradeoffs, and unresolved questions. Use when hardening a std-feature or frontier-bet, updating the spec, plan, and beads after every pass.",
+      "file": "skills/flaw-scan-x5/SKILL.md",
+      "triggers": [
+        "flaw scan",
+        "review proposal",
+        "harden plan",
+        "hidden tradeoffs",
+        "unresolved questions",
+        "fake certainty"
+      ]
+    },
+    {
+      "name": "frontend-patterns",
+      "description": "Frontend development patterns using Vue 3, Nuxt 3, Pinia, TypeScript, Cypress, Playwright, D3.js, and Monaco Editor. Covers data dashboards, analytics visualisations, and code-editor components.",
+      "file": "skills/frontend-patterns/SKILL.md",
+      "triggers": [
+        ".vue",
+        "nuxt",
+        "pinia",
+        "cypress",
+        "d3",
+        "composable",
+        "typescript"
+      ]
+    },
+    {
+      "name": "frontier-bet",
+      "description": "High-rigor delivery lane for strategic, novel, or high-blast-radius work. Runs discovery, ambition, PRD, spec, beads, flaw scan, repeated slice loops, full review, ship, learning, and the next-bet handoff.",
+      "file": "skills/frontier-bet/SKILL.md",
+      "triggers": [
+        "frontier bet",
+        "strategic architecture",
+        "high blast radius"
+      ]
+    },
+    {
+      "name": "iterative-retrieval",
+      "description": "Pattern for progressively refining context retrieval to solve the subagent context problem.",
+      "file": "skills/iterative-retrieval/SKILL.md",
+      "triggers": [
+        "retrieval",
+        "multi-agent",
+        "subagent",
+        "context",
+        "orchestrate"
+      ]
+    },
+    {
+      "name": "llm-tldr",
+      "description": "Use LLM-TLDR (tldr CLI) for fast, semantic codebase exploration before grepping. Covers warm/index, semantic search, call graph analysis, dead code detection, and token-efficient function summaries.",
+      "file": "skills/llm-tldr/SKILL.md",
+      "triggers": [
+        "tldr",
+        "llm-tldr",
+        "semantic search",
+        "call graph",
+        "dead code",
+        "explore codebase",
+        "where is",
+        "who calls",
+        "impact analysis"
+      ]
+    },
+    {
+      "name": "next-best-bet",
+      "description": "Pick the highest-leverage next autonomous move when no explicit task is queued, then start it or surface the one real blocker with a recommendation.",
+      "file": "skills/next-best-bet/SKILL.md",
+      "triggers": [
+        "next best bet",
+        "next move"
+      ]
+    },
+    {
+      "name": "observability-patterns",
+      "description": "Structured logging, metrics, health checks, distributed tracing, and alerting patterns for production services.",
+      "file": "skills/observability-patterns/SKILL.md",
+      "triggers": [
+        "logging",
+        "metrics",
+        "tracing",
+        "health check",
+        "alerting",
+        "grafana",
+        "opentelemetry"
+      ]
+    },
+    {
+      "name": "operate-and-learn",
+      "description": "Close the loop after delivery by checking the operating result, capturing durable lessons, and handing off to the next autonomous move.",
+      "file": "skills/operate-and-learn/SKILL.md",
+      "triggers": [
+        "operate and learn",
+        "lessons",
+        "learning loop"
+      ]
+    },
+    {
+      "name": "operational-excellence",
+      "description": "Incident response, deployment strategies, circuit breakers, and reliability patterns for production services.",
+      "file": "skills/operational-excellence/SKILL.md",
+      "triggers": [
+        "incident",
+        "deployment",
+        "circuit-breaker",
+        "reliability",
+        "on-call"
+      ]
+    },
+    {
+      "name": "plan",
+      "description": "Break a validated spec or feature initiative into small demoable implementation slices, acceptance criteria, verification steps, dependencies, and tracked tasks.",
+      "file": "skills/plan/SKILL.md",
+      "triggers": [
+        "/plan",
+        "implementation plan",
+        "slice plan"
+      ]
+    },
+    {
+      "name": "prd-development",
+      "description": "Build a structured PRD that connects problem, users, solution, and success criteria. Use when turning discovery notes into an engineering-ready document for a major initiative.",
+      "file": "skills/prd-development/SKILL.md",
+      "triggers": [
+        "prd",
+        "product requirements",
+        "product brief"
+      ]
+    },
+    {
+      "name": "product-clarity-review",
+      "description": "Review product, pricing, customer, transcript, documentation, and engineering evidence to answer ambiguity questions before design or implementation.",
+      "file": "skills/product-clarity-review/SKILL.md",
+      "triggers": [
+        "product clarity",
+        "customer promise",
+        "commercial promise",
+        "acceptance tests",
+        "requirement registration",
+        "product decision"
+      ]
+    },
+    {
+      "name": "project-opinion-elicitor",
+      "description": "Honest project-level critique after codebase exploration, used to test whether an initiative is useful, well designed, pragmatic, and friendly to humans and AI agents.",
+      "file": "skills/project-opinion-elicitor/SKILL.md",
+      "triggers": [
+        "project opinion",
+        "honest assessment",
+        "reality check",
+        "is this a good idea",
+        "critical feedback",
+        "project value"
+      ]
+    },
+    {
+      "name": "python-patterns",
+      "description": "Pythonic idioms, PEP 8 standards, type hints, and best practices for building robust, efficient, and maintainable Python applications.",
+      "file": "skills/python-patterns/SKILL.md",
+      "triggers": [
+        ".py",
+        "python",
+        "pep8",
+        "type hint",
+        "pydantic",
+        "dataclass"
+      ]
+    },
+    {
+      "name": "python-testing",
+      "description": "Python testing strategies using pytest, TDD methodology, fixtures, mocking, parametrization, and coverage requirements.",
+      "file": "skills/python-testing/SKILL.md",
+      "triggers": [
+        "pytest",
+        "test_",
+        "conftest",
+        "coverage",
+        "mock",
+        "fixture",
+        "parametrize"
+      ]
+    },
+    {
+      "name": "quick-fix",
+      "description": "Lean delivery lane for clear, bounded fixes. Keeps the process tight while making TDD, review-hard, and the model floor explicit.",
+      "file": "skills/quick-fix/SKILL.md",
+      "triggers": [
+        "quick fix",
+        "bug fix",
+        "root cause"
+      ]
+    },
+    {
+      "name": "research-software",
+      "description": "Research unfamiliar or fast-moving software from source, docs, and GitHub before committing to a plan.",
+      "file": "skills/research-software/SKILL.md",
+      "triggers": [
+        "research software",
+        "tool research",
+        "library research"
+      ]
+    },
+    {
+      "name": "review-hard",
+      "description": "Review a local diff or ready slice for bugs, regressions, missing proof, security risks, and overcomplication before shipping.",
+      "file": "skills/review-hard/SKILL.md",
+      "triggers": [
+        "review hard",
+        "hard review",
+        "slice review"
+      ]
+    },
+    {
+      "name": "security-review",
+      "description": "Security review for authentication, user input, secrets, API endpoints, configurable rules, and other security-sensitive features.",
+      "file": "skills/security-review/SKILL.md",
+      "triggers": [
+        "auth",
+        "jwt",
+        "password",
+        "token",
+        "pii",
+        "vulnerability",
+        "injection",
+        "owasp"
+      ]
+    },
+    {
+      "name": "senior-engineering",
+      "description": "Senior engineering review for production-ready services and agents (Python/Go/C++). Focuses on correctness, reliability, scalability, observability, security baseline, testing, and operability.",
+      "file": "skills/senior-engineering/SKILL.md",
+      "triggers": [
+        "senior engineering",
+        "engineering review"
+      ]
+    },
+    {
+      "name": "ship-safe",
+      "description": "Close a delivery lane without permission theatre. Verifies, commits, pushes, opens or updates PRs, and merges only when the current repo contract and gates allow it.",
+      "file": "skills/ship-safe/SKILL.md",
+      "triggers": [
+        "ship safe",
+        "open pr",
+        "delivery close"
+      ]
+    },
+    {
+      "name": "spec-driven-development",
+      "description": "Creates specs before coding. Use when starting a new project, feature, or significant change and no specification exists yet, or when requirements are unclear or only exist as a vague idea.",
+      "file": "skills/spec-driven-development/SKILL.md",
+      "triggers": [
+        "spec",
+        "specification",
+        "spec-driven"
+      ]
+    },
+    {
+      "name": "std-feature",
+      "description": "Default delivery lane for normal product work. Runs PRD, spec, plan, beads, flaw scan, TDD, build, simplification, review, ship, learning, and the next-bet handoff in a cumulative loop.",
+      "file": "skills/std-feature/SKILL.md",
+      "triggers": [
+        "standard feature",
+        "std-feature",
+        "feature delivery"
+      ]
+    },
+    {
+      "name": "strategic-compact",
+      "description": "Suggests manual context compaction at logical intervals to preserve context through task phases rather than arbitrary auto-compaction.",
+      "file": "skills/strategic-compact/SKILL.md",
+      "triggers": [
+        "compact",
+        "context",
+        "summarize",
+        "token",
+        "window"
+      ]
+    },
+    {
+      "name": "tdd-workflow",
+      "description": "Test-driven development with 85%+ coverage using pytest, Google Test, Vitest, and Cypress. Use when writing new features, fixing bugs, or refactoring.",
+      "file": "skills/tdd-workflow/SKILL.md",
+      "triggers": [
+        "tdd",
+        "test-first",
+        "red-green",
+        "coverage",
+        "write tests",
+        "test driven"
+      ]
+    },
+    {
+      "name": "test-driven-development",
+      "description": "Prove behaviour changes with tests before or alongside implementation. Use for bug fixes, new logic, regressions, and risky refactors.",
+      "file": "skills/test-driven-development/SKILL.md",
+      "triggers": [
+        "test driven",
+        "failing test"
+      ]
+    },
+    {
+      "name": "test-engineer",
+      "description": "Deep review and design of tests to ensure production behaviour is covered (unit, integration, contract, regression, concurrency, property/fuzz) across Python/Go/C++.",
+      "file": "skills/test-engineer/SKILL.md",
+      "triggers": [
+        "test engineer",
+        "test review",
+        "verification review"
+      ]
+    },
+    {
+      "name": "verification-loop",
+      "description": "A comprehensive verification system for Claude Code sessions. Runs language-specific quality gates for Python, C++, and Vue/Nuxt.",
+      "file": "skills/verification-loop/SKILL.md",
+      "triggers": [
+        "verify",
+        "lint",
+        "type-check",
+        "quality gate",
+        "ruff",
+        "mypy",
+        "eslint",
+        "cppcheck"
+      ]
+    }
+  ],
+  "rules": {
+    "common": [
+      "rules/common/agents.md",
+      "rules/common/chapter-config.md",
+      "rules/common/coding-style.md",
+      "rules/common/git-workflow.md",
+      "rules/common/hooks.md",
+      "rules/common/patterns.md",
+      "rules/common/performance.md",
+      "rules/common/project-updates.md",
+      "rules/common/security.md",
+      "rules/common/testing.md"
+    ],
+    "python": [
+      "rules/python/coding-style.md",
+      "rules/python/hooks.md",
+      "rules/python/patterns.md",
+      "rules/python/security.md",
+      "rules/python/testing.md"
+    ],
+    "typescript": [
+      "rules/typescript/coding-style.md",
+      "rules/typescript/hooks.md",
+      "rules/typescript/patterns.md",
+      "rules/typescript/security.md",
+      "rules/typescript/testing.md"
+    ],
+    "cpp": [
+      "rules/cpp/coding-style.md",
+      "rules/cpp/hooks.md",
+      "rules/cpp/patterns.md",
+      "rules/cpp/security.md",
+      "rules/cpp/testing.md"
+    ]
+  },
+  "contexts": [
+    {
+      "name": "dev",
+      "description": "Active development mode",
+      "file": "contexts/dev.md"
+    },
+    {
+      "name": "review",
+      "description": "Security-first code review mode",
+      "file": "contexts/review.md"
+    },
+    {
+      "name": "research",
+      "description": "Exploration and investigation mode",
+      "file": "contexts/research.md"
+    }
+  ],
+  "mcpServers": "mcp-configs/mcp-servers.json"
+}
