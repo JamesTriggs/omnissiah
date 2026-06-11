@@ -14,36 +14,6 @@
       },
       {
         "matcher": "Bash",
-        "description": "Warn before pushing to a protected branch",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/hooks/bash-pre-push-warn.js"
-          }
-        ]
-      },
-      {
-        "matcher": "Bash",
-        "description": "Block starting a development server",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/hooks/bash-pre-devserver-block.js"
-          }
-        ]
-      },
-      {
-        "matcher": "Bash",
-        "description": "Block dependency install commands so the user runs them",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/hooks/bash-pre-install-block.js"
-          }
-        ]
-      },
-      {
-        "matcher": "Bash",
         "description": "Block commits containing secrets such as AWS keys, API tokens, and passwords",
         "hooks": [
           {
