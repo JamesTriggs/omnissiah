@@ -1,0 +1,35 @@
+{
+  "$comment": "Codex port of omnissiah hooks. Only events Codex supports (PreToolUse, PostToolUse, SessionStart) and command-based scripts that read tool_input.command and block via exit-2 are included. Matchers are omitted so hooks fire on all tools and self-filter, which is robust across Codex tool names (shell/local_shell/apply_patch). CLAUDE_PLUGIN_ROOT is read by Codex as a legacy plugin-root var and resolves to the installed plugin cache.",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "description": "Block git pushes to main/master (omnissiah bash-pre-dispatch). Reads tool_input.command; exit 2 blocks.",
+        "hooks": [
+          { "type": "command", "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/hooks/bash-pre-dispatch.js" }
+        ]
+      },
+      {
+        "description": "Block git add/commit when the staged diff contains secrets (omnissiah bash-pre-secret-check).",
+        "hooks": [
+          { "type": "command", "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/hooks/bash-pre-secret-check.js" }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "description": "Continuous-learning observer (omnissiah). Records tool observations for instinct detection.",
+        "hooks": [
+          { "type": "command", "command": "node ${CLAUDE_PLUGIN_ROOT}/skills/continuous-learning-v2/hooks/observe.js" }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "description": "Load previous context on session start (omnissiah).",
+        "hooks": [
+          { "type": "command", "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/hooks/session-start.js" }
+        ]
+      }
+    ]
+  }
+}
