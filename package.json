@@ -6,7 +6,9 @@
   "author": "James Triggs <jamesjtriggs@gmail.com>",
   "scripts": {
     "validate": "node scripts/ci/validate-agents.js && node scripts/ci/validate-commands.js && node scripts/ci/validate-hooks.js && node scripts/ci/validate-rules.js && node scripts/ci/validate-skills.js",
-    "test": "node tests/run-all.js"
+    "test": "node tests/run-all.js",
+    "codex:setup": "node scripts/codex-setup.js",
+    "codex:sync": "node scripts/codex-sync.js"
   },
   "repository": {
     "type": "git",
