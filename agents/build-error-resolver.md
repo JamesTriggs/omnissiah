@@ -212,7 +212,7 @@ return case.id
 ### Python: Import Resolution
 
 ```python
-# ERROR: ModuleNotFoundError: No module named 'app.app.hunt'
+# ERROR: ModuleNotFoundError: No module named 'app.services'
 
 # FIX 1: Check pyproject.toml packages configuration
 [tool.setuptools.packages.find]
@@ -220,7 +220,7 @@ where = ["."]
 include = ["app*"]
 
 # FIX 2: Check __init__.py exists
-# app/app/hunt/__init__.py must exist
+# app/services/__init__.py must exist
 
 # FIX 3: Check uv sync was run
 # uv sync --group dev
@@ -477,7 +477,7 @@ return result.title
 ## Errors Fixed
 
 ### 1. [Error Category]
-**Location:** `app/app/hunt/query_builder.py:142`
+**Location:** `app/services/query_builder.py:142`
 **Error Message:**
 ```
 error: Item "None" of "Case | None" has no attribute "title"
@@ -526,7 +526,7 @@ error: Item "None" of "Case | None" has no attribute "title"
 - `npm run build-prod` fails
 - `npx vue-tsc --noEmit` shows type errors
 - `protoc` compilation fails
-- Azure Pipeline CI build fails
+- CI pipeline build fails
 
 **DO NOT USE when:**
 - Code needs refactoring (use refactor-cleaner)

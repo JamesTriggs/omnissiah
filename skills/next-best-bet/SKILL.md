@@ -100,7 +100,7 @@ Do not:
 - pick a task because it sounds important but proves nothing
 - treat stale docs or resolver drift as harmless when they are breaking agent behavior
 
-## Repo-specific bias
+## Prioritisation bias
 
-In `AI_EA`, prefer fixing autonomy corridors, routing gaps, missing skills, broken memory links, and operator workflow blockers before polishing secondary artifacts.
+Prefer fixing the systems that steer the work, routing gaps, missing skills, broken memory or context links, and operator workflow blockers, before polishing secondary artifacts.
 If the system that is supposed to steer agents is broken, fix that first.

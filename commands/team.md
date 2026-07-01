@@ -1,5 +1,5 @@
 ---
-description: Launch a harness-engineered agent team to build features. Runs prompt intake → orchestrator → parallel leads → workers. The user only ever prompts the orchestrator. Use Ctrl+O to drill into any lead or worker thread.
+description: Launch a harness-engineered agent team to build features. Runs prompt intake → orchestrator → parallel leads → workers. The user only ever prompts the orchestrator. If your client supports drilling into subagent threads (for example Ctrl+O in Claude Code), you can inspect any lead or worker thread.
 ---
 
 # /team — Agent Teams
@@ -31,7 +31,7 @@ You  →  /team "task"
      (existing agents)     using full tool access
 ```
 
-**You only ever talk to the orchestrator.** Leads and workers run as sub-agents — use `Ctrl+O` to drill into any thread and inspect what they're doing.
+**You only ever talk to the orchestrator.** Leads and workers run as sub-agents. If your client supports drilling into subagent threads (for example `Ctrl+O` in Claude Code), you can inspect any thread and see what it's doing.
 
 ## Execution Steps
 
@@ -64,7 +64,7 @@ The orchestrator will:
 
 As the orchestrator emits status updates, relay them to the user. The user can at any time:
 - Type a message to send to the orchestrator (e.g., "deprioritise the E2E tests for now")
-- Press `Ctrl+O` to inspect a lead's or worker's sub-thread
+- If your client supports it (for example `Ctrl+O` in Claude Code), drill into a lead's or worker's sub-thread to inspect it
 - Type `/checkpoint` to save progress
 
 ### Step 5: Surface the final report
@@ -107,17 +107,17 @@ When the orchestrator emits its FINAL REPORT, present it clearly. If status is N
 
 ---
 
-## Ctrl+O — Drill-Down Experience
+## Drill-Down Experience
 
-The three-tier architecture maps directly to Claude Code's sub-agent threads:
+If your client supports drilling into subagent threads (for example `Ctrl+O` in Claude Code), the three-tier architecture maps directly onto those threads:
 
 ```
 Main thread          /team output — orchestrator status, till-done list
-  Ctrl+O ↓
+  drill in ↓
   Orchestrator       Full orchestrator context — lead spawning, planning
-    Ctrl+O ↓
+    drill in ↓
     Lead A thread    Lead's domain exploration and worker delegation
-      Ctrl+O ↓
+      drill in ↓
       Worker thread  Actual implementation, tests, file writes
     Lead B thread    Running in parallel with Lead A
 ```
@@ -154,15 +154,14 @@ During a `/team` run, the orchestrator and leads emit structured progress lines 
 ### Format
 
 ```
-[team] ⏳ backend-lead — exploring the API service (turn 2)
-         → reading app/records/service.py
-         → 2 turns ↑18k ↓6k $0.031
+[team] ⏳ backend-lead — running (turn 2)
+         → exploring the API service, reading app/records/service.py
 
-[team] ✓ tdd-guide — tests written and passing
-         → 3 turns ↑24k ↓12k $0.048
+[team] ✓ tdd-guide — done (3 turns)
+         → tests written and passing
 
-[team] ✗ security-reviewer — blocked on missing auth fixture
-         → 1 turn ↑8k ↓2k $0.012
+[team] ✗ security-reviewer — blocked (1 turn)
+         → waiting on a missing auth fixture
 
 [team] ◐ parallel: 1/3 done, 2 running
 ```

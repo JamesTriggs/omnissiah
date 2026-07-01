@@ -208,7 +208,7 @@ pages/
     index.vue       # Item list
     [id].vue        # Item detail
   rules/
-    rules.vue       # Rule management
+    rules.vue       # Settings management
   records/
     index.vue       # Record list
     [id].vue        # Record detail

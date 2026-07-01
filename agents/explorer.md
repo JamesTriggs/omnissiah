@@ -1,7 +1,7 @@
 ---
 name: explorer
 description: Fast codebase exploration specialist. Use for quick pattern finding, file discovery, understanding unfamiliar code, tracing data flows, locating API endpoints, and answering "where is X defined?" questions. Uses Haiku for speed and cost-efficiency on exploration tasks.
-tools: ["Read", "Grep", "Glob", "Bash"]
+tools: ["Read", "Grep", "Glob"]
 model: haiku
 ---
 
@@ -33,7 +33,7 @@ EXPLORATION RESULTS: [query]
 ═══════════════════════════
 
 FOUND IN:
-  src/app/search/query_builder.py:45
+  src/services/query_builder.py:45
   src/api/search/views.py:123
 
 KEY PATTERNS:

@@ -20,7 +20,7 @@ Each step must refine the next one. Do not treat the flow like a checklist you s
 2. use `llm-tldr` first for repo structure, relevant context, change impact, callers, importers, diagnostics, and dead code when the work touches existing code or broad refactors
 3. `/context-engineering` to set the lane context and slice boundaries
 4. `/context-engineering-advisor` when the work is multi-slice, multi-agent, cross-system, retry-heavy, or context-noisy
-5. `/customer-evidence` when the customer problem, segment, or urgency is not already proven
+5. `/discovery-process` when the customer problem, segment, or urgency is not already proven
 6. `/prd-development`
 7. `/spec-driven-development`
 8. `/plan`
@@ -28,7 +28,7 @@ Each step must refine the next one. Do not treat the flow like a checklist you s
 10. `/flaw-scan-x5` and feed every improvement back into the PRD, the spec, the plan, and the beads before coding
 11. run the slice loop for each slice in bead order:
    - `/test-driven-development`
-   - `/build-slice` in a fresh subagent or fresh session with bounded slice context
+   - `/build-slice` in a fresh subagent or fresh session with bounded slice context. You may execute this slice with the `/team` harness for parallel execution.
    - `/code-simplify`
    - `/review-hard`
    - `/browser-proof` when users will see it
@@ -65,15 +65,17 @@ Default review is two independent subagent lenses: `senior-engineering` and
 Add `security-review` when auth, permissions, secrets, infra, network boundaries, or other risky surfaces are touched.
 Escalate to the full 4-lens stack when blast radius, migration risk, reversibility, or architecture weight becomes real.
 
-Each lens runs in its own fresh subagent or bounded session with the diff,
-touched files, risk notes, and test evidence. Do not create or wait on
-cross-model review. Fix every finding, including small nits, before continuing.
+Each lens MUST run in its own fresh subagent with a clean context, separate
+from the implementer's context, given the diff, touched files, risk notes, and
+test evidence. A generator grading its own work is unreliable, so external
+verification is what adds signal. Do not create or wait on cross-model review.
+Fix every finding, including small nits, before continuing.
 
 ## Model rule
 
-Preferred model: Opus 4.7 or later at `x-high`.
+Preferred model: the strongest available model (latest Opus-tier) at `x-high`.
 
-If that exact model is unavailable, use the strongest later model or equivalent reasoning tier.
+If that is unavailable, use the strongest available model at an equivalent reasoning tier.
 Do not cheap out on standard feature delivery.
 
 ## Stop conditions

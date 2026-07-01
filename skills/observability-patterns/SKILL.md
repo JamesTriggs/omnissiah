@@ -1,8 +1,97 @@
+---
+name: observability-patterns
+description: Instrument services for observability using OpenTelemetry as the vendor-neutral standard, covering traces, metrics, logs, semantic conventions, and OTLP export, plus health checks and alerting. Use when adding logging, metrics, or tracing to a service, wiring up OpenTelemetry, correlating requests across services, or defining alert thresholds. Triggers include observability, logging, metrics, tracing, opentelemetry, otel.
+---
+
 # Observability Patterns
 
 Comprehensive observability skill covering structured logging, metrics, health checks, distributed tracing, alerting, and incident response logging across a polyglot platform.
 
+## OpenTelemetry First
+
+**OpenTelemetry (OTel) is the current industry standard for observability and the default this skill assumes.** It is a vendor-neutral, CNCF specification plus a set of SDKs that produce the three signals — traces, metrics, and logs — in one consistent model, then export them over a single wire protocol (OTLP) to any backend. Instrument once against the OTel API; choose or swap the backend later. The Datadog/StatsD examples further down are shown as *one* possible backend, not the default.
+
+### The three signals
+
+- **Traces** — a trace is a tree of spans following one request across services. Each span has a name, start/end time, status, and attributes; child spans nest under parents. Traces answer "where did the time go and where did it fail" across a distributed call path. This subsumes the ad-hoc request-ID propagation described later — with OTel, trace context propagation is built in.
+- **Metrics** — numeric measurements over time: counters (monotonic totals), up/down counters, gauges (point-in-time values), and histograms (distributions, for latency and sizes). This is the OTel-native replacement for hand-rolled StatsD calls.
+- **Logs** — structured, timestamped records. OTel correlates logs with the active trace by stamping `trace_id` and `span_id` onto each record, so a log line links directly to the span that emitted it.
+
+### Semantic conventions
+
+OTel defines **semantic conventions**: standard names for common attributes so telemetry is portable and queryable regardless of language or backend. Prefer them over bespoke keys:
+
+- HTTP: `http.request.method`, `http.response.status_code`, `url.path`, `server.address`
+- RPC/DB: `rpc.system`, `db.system`, `db.query.text`, `db.operation.name`
+- General: `service.name`, `service.version`, `deployment.environment.name`
+
+Set resource attributes (`service.name`, `service.version`, `deployment.environment.name`) once per process; they attach to every span, metric, and log the service emits. Reserve custom attribute names for genuinely domain-specific fields (`tenant_id`, `rule_id`) and namespace them consistently.
+
+### OTLP export and the Collector
+
+Instrumented services export over **OTLP** (OpenTelemetry Protocol, gRPC or HTTP) to either a backend directly or, preferably, to an **OpenTelemetry Collector**. The Collector is a standalone process that receives, batches, processes (redaction, sampling, attribute enrichment), and fans out telemetry to one or more backends. Routing through a Collector means the application never hard-codes a vendor: point the Collector's exporter at Datadog, Prometheus + Tempo + Loki, an OTLP-native SaaS, or several at once, and change destinations without touching service code.
+
+```python
+# Python — OTel SDK: tracer + OTLP export (backend-agnostic)
+from opentelemetry import trace
+from opentelemetry.sdk.trace import TracerProvider
+from opentelemetry.sdk.trace.export import BatchSpanProcessor
+from opentelemetry.sdk.resources import Resource
+from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
+
+resource = Resource.create({
+    "service.name": "internal-api",
+    "service.version": APP_VERSION,
+    "deployment.environment.name": ENV,
+})
+provider = TracerProvider(resource=resource)
+# Exports to a Collector (or any OTLP endpoint); the backend is a Collector concern
+provider.add_span_processor(BatchSpanProcessor(OTLPSpanExporter(endpoint=OTLP_ENDPOINT)))
+trace.set_tracer_provider(provider)
+tracer = trace.get_tracer(__name__)
+
+@app.route("/events")
+def get_events():
+    with tracer.start_as_current_span("get_events") as span:
+        span.set_attribute("tenant_id", get_tenant_id_from_jwt())
+        span.set_attribute("http.request.method", "GET")
+        return query_events()
+```
+
+```python
+# Python — OTel metrics (counter + histogram), OTLP export
+from opentelemetry import metrics
+from opentelemetry.sdk.metrics import MeterProvider
+from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
+from opentelemetry.exporter.otlp.proto.grpc.metric_exporter import OTLPMetricExporter
+
+reader = PeriodicExportingMetricReader(OTLPMetricExporter(endpoint=OTLP_ENDPOINT))
+metrics.set_meter_provider(MeterProvider(resource=resource, metric_readers=[reader]))
+meter = metrics.get_meter(__name__)
+
+request_duration = meter.create_histogram(
+    "http.server.request.duration", unit="ms", description="API response time")
+request_count = meter.create_counter(
+    "http.server.request.count", description="Request count")
+
+# In a request handler / middleware:
+request_duration.record(duration_ms, {"http.route": route, "http.response.status_code": status})
+request_count.add(1, {"http.route": route, "http.response.status_code": status})
+```
+
+**Auto-instrumentation** covers common frameworks and clients (Flask, FastAPI, SQLAlchemy, HTTP clients, Celery, gRPC) with little or no code change — enable it first, then add manual spans and custom metrics only where the framework instrumentation is not enough. Language support is broad (Python, JS/TS, Go, Java, C++, and more), so a polyglot platform gets one consistent model across services.
+
+### Choosing a backend
+
+Because export is standardised, the backend is a deployment decision, not an instrumentation one:
+
+- **Self-hosted open source**: Prometheus (metrics), Tempo/Jaeger (traces), Loki (logs), Grafana (visualisation).
+- **OTLP-native SaaS**: Grafana Cloud, Honeycomb, and similar accept OTLP directly.
+- **Vendor agents**: Datadog, New Relic, and others ingest OTLP or run their own agent. The StatsD/Datadog code below is an example of this last category — valid, but one option among many, not the baseline.
+
 ## Structured Logging
+
+Structured logs are one of the three OTel signals. Emit them as JSON (as below) and, where OTel logging is wired up, let the SDK stamp `trace_id`/`span_id` onto each record so a log line links to the span that produced it. The `structlog`/`spdlog` setups below produce the JSON records; OTLP export (via the log SDK or the Collector) ships them to the same backend as traces and metrics.
 
 ### Python Services (structlog)
 
@@ -126,7 +215,9 @@ export function useLogger(component: string) {
 }
 ```
 
-## Metrics (StatsD / Datadog)
+## Metrics (backend example: StatsD / Datadog)
+
+The examples in this section use a StatsD/Datadog client to show a concrete backend. In new code, prefer emitting metrics through the OTel metrics API (see OpenTelemetry First above) and exporting via OTLP; the metric names and tag conventions below carry over directly as OTel instrument names and attributes. Treat this section as "how it looks against one specific backend", not as the recommended default.
 
 ### Standard Metric Names
 
@@ -251,6 +342,8 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=3 \
 
 ## Distributed Tracing
 
+**Prefer OpenTelemetry trace context propagation (see OpenTelemetry First above).** With OTel, a `trace_id`/`span_id` is created at the edge and propagated automatically across HTTP, gRPC, and messaging via the W3C `traceparent` header — you get a full span tree without hand-threading an ID. The manual `request_id` propagation described below predates OTel adoption; it remains a valid lightweight fallback where OTel is not yet wired up, and the `request_id` can be carried as a span attribute (or derived from the trace ID) so the two coexist during migration.
+
 ### Request ID Propagation
 
 Every request entering the platform receives a `request_id` (UUID v4) that propagates across all service calls.
@@ -352,4 +445,4 @@ logger.warning("incident.declared",
 - Warm storage (S3): 90 days
 - Cold archive: 1 year (compliance requirement)
 
-All observability patterns must be applied consistently across services. When adding a new service or endpoint, verify that logging, metrics, health checks, and tracing are configured before the PR is merged.
+All observability patterns must be applied consistently across services. When adding a new service or endpoint, verify that logging, metrics, health checks, and tracing are configured before the PR is merged. For new services, instrument against the OpenTelemetry API and export via OTLP (to a Collector) rather than wiring directly to a specific vendor SDK, so the backend stays a swappable deployment choice.

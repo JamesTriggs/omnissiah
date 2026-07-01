@@ -1,17 +1,22 @@
 # omnissiah
 
-omnissiah is a generic AI engineering operating system for Claude Code. It packages a curated set of agents, slash commands, skills, hooks, and coding rules into a single Claude Code plugin, plus a harness for running multi-agent teams. It is domain-agnostic and works on any software project, in any language.
+omnissiah is a generic, engineering-focused AI operating system for Claude Code. It packages a curated set of agents, slash commands, skills, hooks, and coding rules into a single Claude Code plugin, plus a harness for running multi-agent teams. It is domain-agnostic and works on any software engineering project, in any language.
 
 ## What it provides
 
-- **21 agents**, specialised personas (planning, architecture, review, debugging, refactoring, migrations, performance, TDD, documentation, integration, exploration, and the harness roles).
+- **23 agents**, specialised personas (planning, architecture, review, debugging, refactoring, migrations, performance, TDD, documentation, integration, exploration, and the harness roles).
 - **29 commands**, slash commands that drive structured workflows (`/team`, `/plan`, `/code-review`, `/tdd`, `/debug`, `/perf`, `/health`, and more).
-- **47 skills**, reusable bundles of domain knowledge that activate automatically by context.
+- **45 skills**, reusable bundles of domain knowledge that activate automatically by context.
 - **21 hook scripts**, automation for safety guards, code quality, secret detection, and session lifecycle.
 - **Coding rules** for common practice plus Python, TypeScript, and C++.
 - **A three-tier harness** for running parallel agent teams (intake, orchestrator, leads, workers).
 
 Everything is plain Markdown, JSON, and Node.js. There is no build step and no runtime dependency beyond Node.js (and Python 3.10+ for the optional instinct tooling).
+
+## Where to start
+
+- **Delivery lanes** route each piece of work into the right level of rigour (`quick-fix`, `std-feature`, or `frontier-bet`) and run a common spine from spec to ship to learning. See [Delivery lanes](the-omnissiah-guide.md#delivery-lanes) in the guide.
+- **`SKILLS.md`** is the index of all 45 skills, grouped by area, with guidance on which skill to use when several overlap.
 
 ## Quick start
 

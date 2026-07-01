@@ -73,7 +73,7 @@ Debugger:
 2. Isolates: api service › results/views.py › Results.get()
 3. Traces: Query builder does not inject the account filter when none is provided
 4. Root Cause:
-   File: app/results/query_builder.py:145
+   File: app/services/query_builder.py:145
    Missing: account scope filter when base_query is constructed
 5. Fix: Add mandatory account parameter to build_query()
 6. Test: Added test_results_scoped_to_account() — now passes

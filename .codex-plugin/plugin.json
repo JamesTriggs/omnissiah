@@ -33,7 +33,9 @@
     "agents/integrator.md",
     "agents/harness-intake.md",
     "agents/harness-orchestrator.md",
-    "agents/harness-lead.md"
+    "agents/harness-lead.md",
+    "agents/harness-worker.md",
+    "agents/frontend-reviewer.md"
   ],
   "commands": [
     "commands/build-fix.md",
@@ -72,15 +74,12 @@
     "skills/beads-workflow/SKILL.md",
     "skills/browser-proof/SKILL.md",
     "skills/build-slice/SKILL.md",
-    "skills/ceo-advisor/SKILL.md",
     "skills/code-simplify/SKILL.md",
     "skills/coding-standards/SKILL.md",
     "skills/context-engineering/SKILL.md",
     "skills/context-engineering-advisor/SKILL.md",
     "skills/continuous-learning-v2/SKILL.md",
     "skills/cto-level-review/SKILL.md",
-    "skills/customer-evidence/SKILL.md",
-    "skills/customer-incident-reporting/SKILL.md",
     "skills/debug-root-cause/SKILL.md",
     "skills/delivery-lane-router/SKILL.md",
     "skills/discovery-process/SKILL.md",
@@ -98,7 +97,6 @@
     "skills/plan/SKILL.md",
     "skills/prd-development/SKILL.md",
     "skills/product-clarity-review/SKILL.md",
-    "skills/project-opinion-elicitor/SKILL.md",
     "skills/python-patterns/SKILL.md",
     "skills/python-testing/SKILL.md",
     "skills/quick-fix/SKILL.md",
@@ -113,7 +111,9 @@
     "skills/tdd-workflow/SKILL.md",
     "skills/test-driven-development/SKILL.md",
     "skills/test-engineer/SKILL.md",
-    "skills/verification-loop/SKILL.md"
+    "skills/verification-loop/SKILL.md",
+    "skills/agent-cost-governance/SKILL.md",
+    "skills/mcp-and-tools/SKILL.md"
   ],
   "interface": {
     "displayName": "Omnissiah Engineering Framework",

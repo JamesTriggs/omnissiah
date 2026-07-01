@@ -41,7 +41,7 @@ logger = logging.getLogger(__name__)
 logger.debug("DEBUG: value=%s type=%s", value, type(value))
 
 # Python: use pdb for interactive debugging
-python -m pdb -c continue app/app/...
+python -m pdb -c continue app/...
 
 # Python: trace function calls
 from functools import wraps
@@ -151,7 +151,7 @@ cmake .. -DCMAKE_CXX_FLAGS="-fsanitize=thread -g -O1"
 cmake .. -DCMAKE_CXX_FLAGS="-fsanitize=undefined -g"
 
 # GDB for crash debugging
-gdb --args ./Debug/apns_unit_testexe --gtest_filter="TestSuite.TestName"
+gdb --args ./build/unit_tests --gtest_filter="TestSuite.TestName"
 (gdb) run
 (gdb) bt  # print backtrace on crash
 (gdb) frame 2  # go to frame 2

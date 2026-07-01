@@ -19,28 +19,27 @@ Slow is smooth. Smooth is fast.
 2. use `llm-tldr` first when the bet touches existing systems and you need structure, context, callers, importers, diagnostics, dead-code checks, or change impact before shaping the work
 3. `/context-engineering` to define the information architecture for the bet
 4. `/context-engineering-advisor` to diagnose boundaries, retrieval, and reset points before coding
-5. `/customer-evidence`
+5. `/discovery-process`
 6. `/discovery-process`
 7. `/research-software` when the bet depends on unfamiliar, fast-moving, or under-documented tools, platforms, APIs, or frameworks; fold the findings back into the PRD, spec, plan, and beads
-8. `/inspiration-fuse`
-9. `/push-ambition`
-10. `/invert-advantage`
-11. `/prd-development`
-12. `/spec-driven-development`
-13. `/plan`
-14. `/beads-workflow`
-15. `/flaw-scan-x5` and integrate the improvements back into the PRD, spec, plan, and beads before coding
-16. run the slice loop for each slice in bead order:
+8. `/prd-development`
+9. `/spec-driven-development`
+10. `/plan`
+11. `/beads-workflow`
+12. `/flaw-scan-x5` and integrate the improvements back into the PRD, spec, plan, and beads before coding
+13. run the slice loop for each slice in bead order:
     - `/test-driven-development`
     - `/build-slice` in a fresh subagent or fresh session with bounded slice context
     - `/code-simplify`
     - independent 4-lens subagent review: `cto-level-review`, `senior-engineering`, `security-review`, `test-engineer`
     - `/browser-proof` when users will see it
-17. repeat the slice loop until every slice in the current bead is done
-18. continue bead by bead until all beads are done
-19. `/ship-safe`
-20. `/operate-and-learn`
-21. `/next-best-bet`
+14. repeat the slice loop until every slice in the current bead is done
+15. continue bead by bead until all beads are done
+16. `/ship-safe`
+17. `/operate-and-learn`
+18. `/next-best-bet`
+
+Push ambition and sharpen the differentiating idea during PRD and spec. Do not treat this as a separate tool.
 
 ## TDD rule
 
@@ -66,9 +65,9 @@ clean.
 
 ## Model rule
 
-Preferred model: Opus 4.7 or later at `x-high`.
+Preferred model: the strongest available model (latest Opus-tier) at `x-high`.
 
-If that exact model is unavailable, use the strongest later model or equivalent reasoning tier.
+If that is unavailable, use the strongest available model at an equivalent reasoning tier.
 
 ## Guardrails
 

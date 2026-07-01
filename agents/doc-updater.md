@@ -116,7 +116,7 @@ docs/CODEMAPS/
 ├── data-model.md              # Protocol Buffer schemas
 ├── databases.md               # analytics + relational schemas
 ├── processing.md               # Streaming + batch processing
-├── infrastructure.md          # Docker, Fargate, Pipelines
+├── infrastructure.md          # Docker, containers, CI/CD
 └── cross-service-flows.md     # Data flow between services
 ```
 
@@ -139,12 +139,12 @@ app/
 │   │   ├── service.py     # Business logic
 │   │   ├── models.py      # SQLAlchemy models
 │   │   └── schemas.py     # Pydantic schemas
-│   ├── hunt/              # Search domain
-│   ├── detection/         # Detection rule management
+│   ├── search/            # Search domain
+│   ├── settings/          # Settings management
 │   └── users/             # User management
 ├── apis/                   # REST API layer (Flask-RESTX)
 │   ├── cases/             # /api/cases endpoints
-│   ├── hunt/              # /api/hunt endpoints
+│   ├── search/            # /api/search endpoints
 │   └── events/            # /api/events endpoints
 ├── db/                     # Data access layer
 │   ├── analytics/        # analytics database client and queries
@@ -161,7 +161,7 @@ app/
 | Module | Purpose | Public API | Dependencies |
 |--------|---------|------------|-------------|
 | app.cases.service | Case CRUD operations | create_case, update_case, list_cases | SQLAlchemy, Redis |
-| app.hunt.query_builder | parsed SQL query construction | build_query, validate_query | sql-parser |
+| app.services.query_builder | parsed SQL query construction | build_query, validate_query | your services |
 | db.analytics.client | analytics-db connection | query, insert, execute | the analytics-db client |
 
 ## API Endpoints
@@ -170,7 +170,7 @@ app/
 |-------|--------|---------|--------------|
 | /api/cases | GET | List cases for account | Yes |
 | /api/cases | POST | Create new case | Yes |
-| /api/hunt/query | POST | Execute parsed SQL query | Yes |
+| /api/search/query | POST | Execute parsed SQL query | Yes |
 | /api/events | GET | List events | Yes |
 
 ## Data Flow
@@ -289,7 +289,7 @@ public:
 
 ```vue
 <!--
-  EventCard.vue - Displays a single event summary
+  ItemCard.vue - Displays a single event summary
 
   Props:
     - event (Event): The event to display
@@ -300,7 +300,7 @@ public:
     - dismiss: Emitted when the user dismisses the event
 
   Usage:
-    <EventCard :event="event" @investigate="handleInvestigate" />
+    <ItemCard :event="event" @investigate="handleInvestigate" />
 -->
 <script setup lang="ts">
 import type { Event } from '~/types'
@@ -406,7 +406,7 @@ message Event {
 6. **Visualization** (web-ui - Nuxt/Vue)
    - Dashboard rendering
    - Investigation workflows
-   - Query workbench interface
+   - Query editor interface
 ```
 
 ## Documentation Update Workflow

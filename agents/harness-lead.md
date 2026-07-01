@@ -96,19 +96,20 @@ Spawn workers sequentially when there are dependencies (e.g., tests must be writ
 
 **When starting a worker**, emit:
 ```
-[team] ⏳ tdd-guide — writing tests for POST /api/v1/auth/refresh
+[team] ⏳ tdd-guide — running (turn 1)
+         → writing tests for POST /api/v1/auth/refresh
 ```
 
 **When a worker completes**, emit:
 ```
-[team] ✓ tdd-guide — 5 test cases written, all red
-         → 3 turns ↑24k ↓12k $0.048
+[team] ✓ tdd-guide — done (3 turns)
+         → 5 test cases written, all red
 ```
 
 Or if it failed:
 ```
-[team] ✗ tdd-guide — failed to locate test fixtures
-         → 1 turn ↑8k ↓2k $0.012
+[team] ✗ tdd-guide — blocked (1 turn)
+         → could not locate test fixtures
 ```
 
 **When your domain is complete**, emit:
@@ -204,7 +205,8 @@ When emitting progress lines or describing what workers did, use this compact no
 
 Example in a progress line:
 ```
-[team] ⏳ tdd-guide — writing auth refresh tests
+[team] ⏳ tdd-guide — running (turn 2)
+         → writing auth refresh tests
          → read tests/auth/test_login.py:L1-L40
          → write tests/auth/test_refresh_token.py
 ```

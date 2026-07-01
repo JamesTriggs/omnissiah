@@ -319,7 +319,7 @@ watch(() => props.eventType, fetchEvents)
     <div v-if="loading" class="loading-spinner" />
     <div v-else-if="error" class="error-message">{{ error }}</div>
     <div v-else>
-      <EventCard
+      <ItemCard
         v-for="event in events"
         :key="event.id"
         :event="event"
