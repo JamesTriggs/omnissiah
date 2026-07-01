@@ -5,7 +5,7 @@
   "license": "MIT",
   "author": "James Triggs <jamesjtriggs@gmail.com>",
   "scripts": {
-    "validate": "node scripts/ci/validate-agents.js && node scripts/ci/validate-commands.js && node scripts/ci/validate-hooks.js && node scripts/ci/validate-rules.js && node scripts/ci/validate-skills.js",
+    "validate": "node scripts/ci/validate-agents.js && node scripts/ci/validate-commands.js && node scripts/ci/validate-hooks.js && node scripts/ci/validate-rules.js && node scripts/ci/validate-skills.js && node scripts/ci/validate-links.js && node scripts/ci/validate-evals.js",
     "test": "node tests/run-all.js"
   },
   "repository": {

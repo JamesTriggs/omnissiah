@@ -28,7 +28,7 @@ This lane is for clear, bounded work. If the issue keeps widening while you insp
 9. `/review-hard`
 10. `/ship-safe`
 
-If the bug is really a broken customer journey, insert `/customer-evidence` before the fix strategy hardens.
+If the bug is really a broken customer journey, insert `/discovery-process` before the fix strategy hardens.
 
 ## TDD rule
 
@@ -61,7 +61,7 @@ including nits, then rerun the relevant check or lens until clean.
 
 ## Model rule
 
-Preferred model: Opus 4.7 or later at `high`.
+Preferred model: the strongest available model (latest Opus-tier) at `high`.
 
 Bump to `x-high` when risky surfaces, unfamiliar code, or security boundaries are involved.
 

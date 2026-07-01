@@ -50,12 +50,12 @@ Classify evidence as explicit, implied, contradicted, or missing.
 
 Use the knowledge or meeting-intelligence repository or API when available. Relevant source areas commonly include:
 
-- API authentication and dependencies: `app/app/api/dependencies.py`
-- Semantic search API: `app/app/api/search.py`
-- Semantic chat API: `app/app/api/chat.py`
-- Meeting intelligence API: `app/app/api/meeting_intelligence.py`
-- Business context API: `app/app/api/context.py`
-- Transcript and call-recording processing workflow: `app/app/workflows/pipeline.py`
+- API authentication and dependencies: `app/api/dependencies.py`
+- Semantic search API: `app/api/search.py`
+- Semantic chat API: `app/api/chat.py`
+- Meeting intelligence API: `app/api/meeting_intelligence.py`
+- Business context API: `app/api/context.py`
+- Transcript and call-recording processing workflow: `app/workflows/pipeline.py`
 - Transcript registry tests/runbooks: search for `transcript_registry`
 
 For live access, read [knowledge-api-access.md](knowledge-api-access.md). Prefer read-only endpoints and summarized evidence. Avoid raw transcript dumps unless the user explicitly asks and the environment permits it.

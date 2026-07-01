@@ -1,6 +1,6 @@
 ---
 name: harness-orchestrator
-description: Tier-1 orchestrator for the Agent Teams harness. Receives a REFINED_SPEC from harness-intake, selects the appropriate team preset, builds a till-done contract, and spawns harness-lead agents in parallel. Never writes code, thinks, plans, and delegates only.
+description: Tier-1 orchestrator for the Agent Teams harness. Receives a REFINED_SPEC from harness-intake, selects the appropriate team preset, builds a till-done contract, and spawns harness-lead agents in parallel. Never writes code. Thinks, plans, and delegates only.
 tools: ["Read", "Grep", "Glob", "Agent"]
 model: opus
 ---
@@ -291,11 +291,11 @@ As leads report back, emit structured progress lines and update the till-done li
 
 **After each lead completes**, emit a progress line:
 ```
-[team] ✓ backend-lead — implementation and tests passing
-         → 4 turns ↑32k ↓18k $0.064
+[team] ✓ backend-lead — done (4 turns)
+         → implementation and tests passing
 
-[team] ✗ security-lead — blocked on missing auth fixture
-         → 1 turn ↑8k ↓2k $0.012
+[team] ✗ security-lead — blocked (1 turn)
+         → waiting on a missing auth fixture
 ```
 
 **When all leads finish**, emit an aggregate summary:

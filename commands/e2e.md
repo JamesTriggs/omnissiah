@@ -307,19 +307,19 @@ describe('Query Execution', () => {
 
 ---
 
-## Example: Rule Management E2E Test
+## Example: Settings Management E2E Test
 
 ```
 User: /e2e Test rule creation and management
 
 Agent:
-# E2E Test Generation: Rule Management
+# E2E Test Generation: Settings Management
 
 ## Generated Test Code
 
 ```typescript
 // cypress/e2e/rules/rule-management.cy.ts
-describe('Rule Management', () => {
+describe('Settings Management', () => {
   beforeEach(() => {
     cy.login('admin@example.test', 'test-password')
     cy.visit('/rules')

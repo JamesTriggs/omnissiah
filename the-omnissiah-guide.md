@@ -14,16 +14,17 @@ This guide is the long-form companion to the README. It explains what each part 
 6. [Hooks](#hooks)
 7. [Rules](#rules)
 8. [Chapters](#chapters)
-9. [The harness and agent teams](#the-harness-and-agent-teams)
-10. [Extending the framework](#extending-the-framework)
+9. [Delivery lanes](#delivery-lanes)
+10. [The harness and agent teams](#the-harness-and-agent-teams)
+11. [Extending the framework](#extending-the-framework)
 
 ## What omnissiah is
 
 omnissiah turns a stock Claude Code install into an opinionated engineering environment. It provides:
 
-- 21 agents, specialised personas with their own model, tool access, and prompt.
+- 23 agents, specialised personas with their own model, tool access, and prompt.
 - 29 commands, slash commands that drive structured workflows.
-- 47 skills, reusable bundles of domain knowledge that activate by context.
+- 45 skills, reusable bundles of domain knowledge that activate by context.
 - 21 hook scripts, automation that runs on session and tool lifecycle events.
 - Coding rules for common practice plus Python, TypeScript, and C++.
 - A three-tier harness for running parallel agent teams.
@@ -146,6 +147,34 @@ Rules are convention and standard documents under `rules/`, organised by categor
 A chapter scopes the framework to one discipline so a contributor only loads the context relevant to their work. The four chapters are python, cpp, frontend, and devops.
 
 When you install with `--chapter <name>`, the installer writes a filtered `plugin.json` into the plugin locations, keeping every global skill and agent plus the chapter-specific extras, and applies any chapter overrides found under `chapters/<name>/`. The active chapter is stored in `~/.claude/omnissiah-chapter.json`. Switch chapters at any time by re-running the installer with a different `--chapter`.
+
+## Delivery lanes
+
+A delivery lane is the process spine that carries a piece of work from idea to shipped and learned. Lanes exist so the rigour matches the risk: a one-line fix should not drag a full PRD behind it, and a strategic architecture change should not skip discovery.
+
+The `delivery-lane-router` skill picks the lane before anyone starts coding. It reads the clarity of the request, the risk and blast radius of the change, and the strength of the evidence behind it, then routes into one of three lanes (or an Outcome Discovery detour when the problem itself is unclear). The router also sets the review floor and the model floor for the work.
+
+The three lanes carry increasing rigour:
+
+- `quick-fix`, a lean lane for clear, bounded fixes. It keeps the process tight while still making TDD, `review-hard`, and the model floor explicit.
+- `std-feature`, the default lane for normal product work. It runs the fuller spine and is where most features live.
+- `frontier-bet`, a high-rigour lane for strategic, novel, or high-blast-radius work. It adds discovery, an ambition step, and full review on top of the standard spine.
+
+Each lane runs a common spine, doing more or less of it depending on the lane. In order, the spine is:
+
+1. `spec-driven-development`, write the spec when requirements are unclear or only a vague idea.
+2. `plan`, break the validated spec into small demoable slices with acceptance criteria and tracked tasks.
+3. `beads-workflow`, turn the plan into a bead task graph with dependencies.
+4. `flaw-scan-x5`, repeatedly scan the spec, plan, and beads for gaps and weak assumptions, updating them each pass.
+5. `build-slice`, implement one small slice at a time with fresh context and proof before moving on.
+6. `review-hard`, review the diff or ready slice for bugs, regressions, missing proof, and overcomplication.
+7. `ship-safe`, close the lane cleanly by verifying, committing, pushing, and merging only when the gates allow.
+8. `operate-and-learn`, check the operating result after delivery and capture durable lessons.
+9. `next-best-bet`, pick the highest-leverage next autonomous move, or surface the one real blocker.
+
+Lanes and the harness compose rather than compete. A lane sets the rigour and sequences the spine, and the `/team` harness (below) is one way to execute the build step, running the slices with parallel agents. You pick a lane to decide how much process the work warrants, then optionally run the building part of that lane through a team.
+
+For a full map of these skills and the others they sit alongside, see `SKILLS.md`.
 
 ## The harness and agent teams
 

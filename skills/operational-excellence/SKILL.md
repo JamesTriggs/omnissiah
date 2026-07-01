@@ -1,3 +1,8 @@
+---
+name: operational-excellence
+description: Operational procedures, incident response, on-call playbooks, deployment strategies, and reliability patterns for production services. Use when running operations, writing or following runbooks, responding to incidents, defining SLOs, staffing on-call, planning rollbacks, or improving reliability. Triggers include operations, runbooks, incidents, SLO, on-call, reliability.
+---
+
 # Operational Excellence
 
 Operational procedures, incident response, deployment strategies, and reliability patterns for a platform running on a container orchestrator (examples use AWS Fargate, but the patterns apply to any orchestrator).

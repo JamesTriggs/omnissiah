@@ -13,13 +13,6 @@ Turn the shaped work into an execution plan the agent can actually deliver.
 
 The plan is the bridge between intent and tracked work. It should be small enough to review, concrete enough to execute, and explicit enough to turn into beads.
 
-## Source
-
-This local Codex skill mirrors the `/plan` command-pack prompt from:
-
-- `/Users/dave/.codex/prompts/plan.md`
-- `agent-vps:/home/ubuntu/.codex/prompts/plan.md`
-
 ## Workflow
 
 1. Work in read-only planning mode first.
@@ -48,5 +41,5 @@ Return:
 
 - Do not code during planning.
 - Keep risky actions explicit.
-- Preserve the shared `/plan` command meaning from the KITT command pack when the repo uses it.
+- Keep the `/plan` meaning consistent with any shared command set the repo already uses.
 - For `std-feature` and `frontier-bet`, this plan is followed by `beads-workflow` and then `flaw-scan-x5`.

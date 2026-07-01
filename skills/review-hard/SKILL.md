@@ -7,6 +7,10 @@ description: Review a local diff or ready slice for bugs, regressions, missing p
 
 Use this before `/ship-safe` or whenever a slice claims to be done.
 
+## Reviewer independence (mandatory)
+
+Review MUST run in a fresh subagent with its own clean context, separate from the implementer's context. A generator grading its own work is unreliable: self-critique collapses and the model tends to rationalise what it already wrote. External verification from a reviewer that never saw the implementation reasoning is what adds signal. Do not fold review into the same context that produced the code.
+
 ## Review Lens
 
 Check for:

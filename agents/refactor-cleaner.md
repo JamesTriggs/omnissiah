@@ -231,12 +231,12 @@ else:
 ```
 # Find registered but unused components
 components/
-  OldEventCard.vue       # Replaced by EventCard.vue
+  OldItemCard.vue       # Replaced by ItemCard.vue
   DeprecatedChart.vue     # Replaced by SecurityChart.vue
   LegacyDashboard.vue     # Old dashboard, new one in pages/dashboard/
 
 # Verify unused:
-grep -r "OldEventCard" --include="*.vue" --include="*.ts" .
+grep -r "OldItemCard" --include="*.vue" --include="*.ts" .
 # If no results, safe to remove
 ```
 
@@ -255,8 +255,8 @@ grep -r "OldEventCard" --include="*.vue" --include="*.ts" .
 ### 6. Duplicate Analytics Query Builders
 ```python
 # Found in multiple places:
-# app/app/hunt/query_builder.py
-# app/app/dashboard/ch_queries.py
+# app/services/query_builder.py
+# app/dashboard/queries.py
 # app/db/analytics_utils.py
 
 # Consolidate to one location:
@@ -278,7 +278,7 @@ Create/update `docs/DELETION_LOG.md`:
 - deprecated-client@1.0 - Last used: never imported
 
 ### Unused Python Files Deleted
-- app/app/legacy/old_dashboard.py - Replaced by: app/dashboard/
+- app/legacy/old_dashboard.py - Replaced by: app/dashboard/
 - app/utils/deprecated_helpers.py - Functions moved to: utils/helpers.py
 
 ### Unused Imports Cleaned

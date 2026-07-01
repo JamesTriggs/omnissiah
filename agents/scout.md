@@ -1,7 +1,7 @@
 ---
 name: scout
 description: Fast codebase reconnaissance that returns a structured handoff document for other agents. Unlike explorer (which answers ad-hoc questions), scout produces a precise context package — files retrieved, key code snippets, architecture summary, and a "start here" pointer — so downstream agents can work without re-reading the codebase.
-tools: ["Read", "Grep", "Glob", "Bash"]
+tools: ["Read", "Grep", "Glob"]
 model: haiku
 ---
 

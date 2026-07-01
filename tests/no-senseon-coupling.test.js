@@ -66,6 +66,20 @@ const FORBIDDEN = [
   'james\\.triggs@senseon',
   '/senseon-work',
   'ai-at-senseon',
+  // Environmental / product leakage regressions. Deliberately specific so we do
+  // not trip on legitimate generic technology (e.g. account_id, tenant_id,
+  // celery, GDPR, azure, fargate remain allowed).
+  'apns',
+  'ReplicatedMergeTree',
+  'Query Workbench',
+  'Record Investigation',
+  'EventCard',
+  'app/app/hunt',
+  'app\\.hunt',
+  '\\bKITT\\b',
+  'AI_EA',
+  '/Users/dave',
+  '/home/ubuntu',
 ];
 
 const FORBIDDEN_RE = new RegExp(FORBIDDEN.join('|'), 'i');

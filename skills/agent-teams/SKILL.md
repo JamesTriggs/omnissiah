@@ -19,6 +19,17 @@ The `/team` command is your entry point into that world.
 
 ---
 
+## When to use which: delivery lanes vs. the /team harness
+
+These two systems compose. They are not alternatives.
+
+- The **delivery lanes** (`quick-fix` / `std-feature` / `frontier-bet`, chosen by `delivery-lane-router`) decide **how much rigour** a piece of work gets: which reviews are mandatory, whether a flaw scan runs, the model floor, and so on.
+- The **`/team` harness** (orchestrator → leads → workers) is one way to **execute** the build or slice step with parallel agents.
+
+Pick a lane first for the rigour, then optionally reach for `/team` to execute the build. A `std-feature` slice, for example, can be handed to `/team` for parallel execution while still owing the lane's reviews and proof.
+
+---
+
 ## The Three-Tier Architecture
 
 ```
@@ -348,33 +359,33 @@ Lead: research domain (read-only — no file writes)
 
 ---
 
-## The Ctrl+O Drill-Down
+## Drilling Into Subagent Threads
 
 Your primary experience is the orchestrator's thread. Everything rolls up there:
 
 ```
-Main Claude Code thread
+Main thread
   → Orchestrator status: "spawning 2 leads in parallel..."
   → Till-done updates as items complete
   → Final report
 
-Ctrl+O → Orchestrator thread
+drill in → Orchestrator thread
   → Full orchestrator context
   → Lead spawn prompts (synthesised specs)
   → Lead reports rolling in
 
-  Ctrl+O → Backend Lead thread
+  drill in → Backend Lead thread
     → Domain exploration (file reads, grep results)
     → Worker spawn prompts
     → Worker reports
 
-    Ctrl+O → tdd-guide Worker thread
+    drill in → tdd-guide Worker thread
       → Actual test file being written
       → Red/green cycle
       → Final test results
 ```
 
-You never need to drill down. But it's there whenever you want to understand *why* a decision was made or *what* an agent is doing.
+If your client supports drilling into subagent threads (for example `Ctrl+O` in Claude Code), you can inspect any lead or worker thread this way. You never need to — everything rolls up to the top — but it's there whenever you want to understand *why* a decision was made or *what* an agent is doing.
 
 ---
 
@@ -419,7 +430,7 @@ Once you have a working `backend-feature` team that reliably builds endpoints co
 
 ## Reading Team Progress
 
-During a `/team` run, the orchestrator and leads emit structured progress lines. These give you live visibility into what's happening without needing to drill into sub-threads with `Ctrl+O`.
+During a `/team` run, the orchestrator and leads emit structured progress lines. These give you live visibility into what's happening without needing to drill into sub-threads (for example via `Ctrl+O` in Claude Code, if your client supports it).
 
 ### Status Icons
 
@@ -433,15 +444,14 @@ During a `/team` run, the orchestrator and leads emit structured progress lines.
 ### Example Output
 
 ```
-[team] ⏳ backend-lead — exploring the orders service (turn 2)
-         → reading src/orders/service.py
-         → 2 turns ↑18k ↓6k $0.031
+[team] ⏳ backend-lead — running (turn 2)
+         → exploring the orders service, reading src/orders/service.py
 
-[team] ✓ tdd-guide — tests written and passing
-         → 3 turns ↑24k ↓12k $0.048
+[team] ✓ tdd-guide — done (3 turns)
+         → tests written and passing
 
-[team] ✗ security-reviewer — blocked on missing auth fixture
-         → 1 turn ↑8k ↓2k $0.012
+[team] ✗ security-reviewer — blocked (1 turn)
+         → waiting on a missing auth fixture
 
 [team] ◐ parallel: 2/3 done, 1 running
 ```
@@ -449,10 +459,9 @@ During a `/team` run, the orchestrator and leads emit structured progress lines.
 ### What Each Field Means
 
 - **Agent name** — the lead or worker emitting the status
-- **Description** — what the agent just did or is doing
+- **Status** — running, done, or blocked
 - **Turns** — how many conversation turns the agent used
-- **↑ / ↓** — input/output tokens consumed
-- **$** — estimated cost of this agent's work
+- **Activity** — a one-line description of what the agent just did or is doing
 
 ### Who Emits What
 
@@ -480,10 +489,10 @@ When leads emit progress lines or summarise worker activity, use this compact no
 ### Usage in progress lines
 
 ```
-[team] ⏳ scout — exploring the orders service auth flow
+[team] ⏳ scout — running (turn 2)
+         → exploring the orders service auth flow
          → grep /def refresh/ in src/
          → read src/apis/auth/views.py:L45-L90
-         → 2 turns ↑18k ↓6k $0.031
 ```
 
 Leads and the orchestrator SHOULD use this compact format when describing what a worker did. Workers themselves use normal tool calls.

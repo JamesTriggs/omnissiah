@@ -40,7 +40,7 @@ Include specific examples of how to fix issues.
 ## Security Checks (CRITICAL)
 
 - Hardcoded credentials (API keys, passwords, tokens, connection strings)
-- SQL injection risks (string concatenation in the analytics database or MySQL queries)
+- SQL injection risks (string concatenation in your analytical datastore or MySQL queries)
 - XSS vulnerabilities (unescaped user input in Vue templates)
 - Missing input validation at API boundaries
 - Insecure dependencies (outdated, vulnerable packages)
@@ -109,8 +109,8 @@ Include specific examples of how to fix issues.
 
 ## Analytics Query Review (HIGH)
 
-- No full table scans (PREWHERE or WHERE with indexed columns)
-- Proper use of MergeTree ordering key columns in WHERE clauses
+- No full table scans (a pre-filter, your engine's PREWHERE-equivalent, or WHERE with indexed columns)
+- Proper use of ordering key columns in WHERE clauses
 - Partition pruning via partition key in queries
 - No SELECT * in production code (select only needed columns)
 - Parameterized queries (no string interpolation of user input)
@@ -147,7 +147,7 @@ Include specific examples of how to fix issues.
 - Inefficient algorithms (O(n^2) when O(n log n) possible)
 - Unnecessary Vue re-renders (missing computed/memo)
 - Large bundle sizes (check for unnecessary imports)
-- Missing the analytics database PREWHERE optimization
+- Missing analytical datastore pre-filter (PREWHERE-equivalent) optimization
 - N+1 queries in SQLAlchemy
 - Unoptimized analytics materialized views
 - Missing Redis caching for frequently accessed data
@@ -172,7 +172,7 @@ Include specific examples of how to fix issues.
 For each issue:
 ```
 [CRITICAL] analytics query injection vulnerability
-File: app/app/hunt/query_builder.py:142
+File: app/services/query_builder.py:142
 Issue: User input directly interpolated into analytics query string
 Fix: Use parameterized query with the analytics-db client client
 
@@ -194,12 +194,12 @@ Fix: Add field 12 to reserved list and use next available number
 reserved 12;
 reserved "old_severity";
 // Use field number 23 (next available) instead
-SecurityLevel severity = 23;
+Severity severity = 23;  // e.g. a severity enum
 ```
 
 ```
 [SUGGESTION] Vue component could use computed property
-File: web-ui/components/EventCard.vue:45
+File: web-ui/components/ItemCard.vue:45
 Issue: Filtering logic runs on every render instead of being cached
 Fix: Extract to computed property
 

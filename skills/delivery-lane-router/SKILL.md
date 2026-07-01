@@ -14,6 +14,15 @@ Pick the smallest safe lane.
 Do not drag a papercut through cathedral process.
 Do not undercook risky work.
 
+## Lanes vs. the /team harness
+
+These two systems compose. They are not alternatives.
+
+- The **delivery lanes** here (`quick-fix` / `std-feature` / `frontier-bet`) decide **how much rigour** a piece of work gets: reviews, flaw scan, model floor, proof.
+- The **`/team` harness** (orchestrator → leads → workers, via the `agent-teams` skill) is one way to **execute** the build or slice step with parallel agents.
+
+Pick a lane first for the rigour, then optionally use `/team` to execute the build. Choosing `/team` never lets you skip the lane's required reviews or proof.
+
 ## Mandatory delivery preflight
 
 Before any build lane starts, enforce the shared delivery rail:
@@ -99,7 +108,7 @@ Review floor:
 
 Model floor:
 
-- preferred: Opus 4.7 or later at `x-high`
+- preferred: the strongest available model (latest Opus-tier) at `x-high`
 - fallback: the strongest available coding model at equivalent high reasoning
 
 ### Frontier Bet
@@ -120,8 +129,8 @@ Review floor:
 
 Model floor:
 
-- default: Opus 4.7 or later at `x-high`
-- use the strongest available model if Opus 4.7 is unavailable
+- default: the strongest available model (latest Opus-tier) at `x-high`
+- always use the strongest available model for this lane
 - max for the nastiest work
 
 ## Context diagnosis

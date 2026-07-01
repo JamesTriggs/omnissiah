@@ -19,7 +19,7 @@ Never optimise without a baseline measurement. Measure first, fix second, measur
 # Python API response time
 time curl -s -o /dev/null -w "%{time_total}\n" \
   -H "Authorization: Bearer $TOKEN" \
-  "http://localhost:5000/api/v1/hunt/results?account_id=x&limit=100"
+  "http://localhost:5000/api/v1/search/results?account_id=x&limit=100"
 
 # analytics query timing
 analytics-db-client --query "
@@ -350,7 +350,7 @@ Always benchmark before and after optimisation:
 # Python micro-benchmark with timeit
 import timeit
 
-setup = "from app.app.hunt import query_builder; data = test_data()"
+setup = "from app.services import query_builder; data = test_data()"
 before = timeit.timeit("query_builder.build_old(data)", setup=setup, number=1000)
 after = timeit.timeit("query_builder.build_new(data)", setup=setup, number=1000)
 

@@ -134,6 +134,18 @@
       "description": "Tier-2 lead agent for the Agent Teams harness. Receives a domain assignment from the orchestrator, explores its domain, spawns specialist worker agents with synthesised prompts, and steps in if workers fail.",
       "model": "sonnet",
       "file": "agents/harness-lead.md"
+    },
+    {
+      "name": "harness-worker",
+      "description": "Tier-3 executor for the Agent Teams harness. Receives one well-scoped slice or task from a harness-lead, implements it (code and tests), verifies it, and returns a concise proof-of-done summary. Use when a lead needs a single, bounded unit of work carried to completion. Does not expand scope, coordinate across slices, or make architecture decisions. Escalate those to the lead.",
+      "model": "sonnet",
+      "file": "agents/harness-worker.md"
+    },
+    {
+      "name": "frontend-reviewer",
+      "description": "Expert frontend code reviewer for Vue 3, Nuxt 3, and TypeScript. Use proactively after modifying Vue/Nuxt/TypeScript frontend code. Reviews composition API correctness, reactivity, prop/emit typing, accessibility, XSS/sanitisation, bundle/performance, Pinia store hygiene, and test coverage. Read-only. Prefer over code-reviewer when the change is frontend-only.",
+      "model": "sonnet",
+      "file": "agents/frontend-reviewer.md"
     }
   ],
   "commands": [
@@ -342,20 +354,6 @@
       ]
     },
     {
-      "name": "ceo-advisor",
-      "description": "Executive leadership guidance for strategic decision-making, organisational development, and stakeholder management. Includes a strategy analyser, financial scenario modelling, board governance frameworks, and investor relations playbooks.",
-      "file": "skills/ceo-advisor/SKILL.md",
-      "triggers": [
-        "ceo",
-        "executive decision",
-        "organisational development",
-        "organizational development",
-        "stakeholder management",
-        "board",
-        "strategic planning"
-      ]
-    },
-    {
       "name": "code-simplify",
       "description": "Simplify code after a slice works. Use to remove accidental complexity, duplicate logic, speculative abstractions, and convention drift.",
       "file": "skills/code-simplify/SKILL.md",
@@ -414,27 +412,6 @@
         "cto review",
         "architecture review",
         "frontier review"
-      ]
-    },
-    {
-      "name": "customer-evidence",
-      "description": "Pull the strongest current customer, PMF, health, and GTM evidence before solutioning. Use when work touches customer outcomes, retention, churn, adoption, PMF, roadmap bets, or strategic feature requests.",
-      "file": "skills/customer-evidence/SKILL.md",
-      "triggers": [
-        "customer evidence",
-        "pmf",
-        "customer signal"
-      ]
-    },
-    {
-      "name": "customer-incident-reporting",
-      "description": "Drafts, reviews, and redrafts customer-facing incident reports from call notes, findings, tickets, and summaries. Use when preparing flash reports, executive summaries, action trackers, or self-contained incident briefs.",
-      "file": "skills/customer-incident-reporting/SKILL.md",
-      "triggers": [
-        "incident report",
-        "flash report",
-        "executive summary",
-        "action tracker"
       ]
     },
     {
@@ -637,19 +614,6 @@
       ]
     },
     {
-      "name": "project-opinion-elicitor",
-      "description": "Honest project-level critique after codebase exploration, used to test whether an initiative is useful, well designed, pragmatic, and friendly to humans and AI agents.",
-      "file": "skills/project-opinion-elicitor/SKILL.md",
-      "triggers": [
-        "project opinion",
-        "honest assessment",
-        "reality check",
-        "is this a good idea",
-        "critical feedback",
-        "project value"
-      ]
-    },
-    {
       "name": "python-patterns",
       "description": "Pythonic idioms, PEP 8 standards, type hints, and best practices for building robust, efficient, and maintainable Python applications.",
       "file": "skills/python-patterns/SKILL.md",
@@ -817,6 +781,30 @@
         "mypy",
         "eslint",
         "cppcheck"
+      ]
+    },
+    {
+      "name": "agent-cost-governance",
+      "description": "Govern token spend and model-tier selection for AI-native engineering. Use when choosing which model tier to run a task on, setting a per-task cost cap or token budget, reasoning about context-window economics, deciding whether multi-agent is worth the spend, or cutting the cost of an agent workflow. Triggers include cost, token budget, model selection, model tier, context economics.",
+      "file": "skills/agent-cost-governance/SKILL.md",
+      "triggers": [
+        "cost",
+        "token budget",
+        "model selection",
+        "model tier",
+        "context economics"
+      ]
+    },
+    {
+      "name": "mcp-and-tools",
+      "description": "Design tool interfaces for agents and build and secure MCP servers. Use when defining agent tools, function calling, tool use, or MCP servers, scoping tools read-only vs write, gating risky actions behind approval, or deciding what to expose to an agent. Triggers include mcp, tool design, tool use, agent tools, function calling.",
+      "file": "skills/mcp-and-tools/SKILL.md",
+      "triggers": [
+        "mcp",
+        "tool design",
+        "tool use",
+        "agent tools",
+        "function calling"
       ]
     }
   ],

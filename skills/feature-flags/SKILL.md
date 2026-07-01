@@ -244,7 +244,7 @@ For feature-flagged changes, rollback is instant:
 # Kubernetes: update environment variable
 kubectl set env deployment/internal-api APP_USE_SQL_MIDDLEWARE=false
 
-# ECS/Fargate: update task definition environment
+# Container platform: update task definition environment
 aws ecs update-service --cluster app --service internal-api --force-new-deployment
 ```
 
