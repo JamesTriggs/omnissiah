@@ -1,0 +1,21 @@
+{
+  "name": "omnissiah",
+  "interface": {
+    "displayName": "Omnissiah Engineering Framework"
+  },
+  "plugins": [
+    {
+      "name": "omnissiah",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "description": "A generic, domain-agnostic Claude Code engineering framework providing agents, commands, skills, hooks, and rules for consistent AI-assisted development across Python, C++, and TypeScript.",
+      "category": "development",
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      }
+    }
+  ]
+}
