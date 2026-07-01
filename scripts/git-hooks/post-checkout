@@ -1,0 +1,4 @@
+#!/bin/sh
+# omnissiah: refresh the Codex plugin cache after a branch checkout/clone.
+# Non-fatal: codex-sync.js always exits 0 so it can never abort a git operation.
+exec node "$(git rev-parse --show-toplevel)/scripts/codex-sync.js" --quiet
